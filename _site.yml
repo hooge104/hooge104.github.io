@@ -1,0 +1,22 @@
+name: "Johan van den Hoogen"
+output_dir: "."
+navbar:
+  title: "Johan van den Hoogen"
+  left:
+    - text: "Research"
+      href: research.html
+    - text: "Code and Data"
+      href: software.html
+  right:
+    - icon: fa-envelope fa-lg
+      href: contact.html
+    - icon: fa-github fa-lg
+      href: http://github.com/hooge104
+    - icon: fa-twitter fa-lg
+      href: https://twitter.com/johandehoogen
+    - icon: fa-linkedin fa-lg
+      href: https://www.linkedin.com/in/johanvandenhoogen
+output:
+  html_document:
+    theme: paper
+    css: 'styles.css'

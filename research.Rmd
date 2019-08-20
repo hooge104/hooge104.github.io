@@ -1,0 +1,42 @@
+---
+output:
+  html_document: 
+    toc: true
+    toc_float: true
+---
+
+<link rel="stylesheet" href="styles.css" type="text/css">
+
+## Crowther Lab, ETH Zürich
+
+### Selected publications
+
+**van den Hoogen, J**, S. Geisen, D. Routh, H. Ferris, W. Traunspurger, D. Wardle, R. de Goede, B. Adams, W. Ahmad, W. S. Andriuzzi, R. D. Bardgett, M. Bonkowski, R. Campos-Herrera, J. E. Cares, T. Caruso, L. de B. Caixeta, X. Chen, S. dos S. da R. Costa, R. Creamer, J. M. da C. Castro, M. Dam, D. Djigal, M. Escuer, B. Griffiths, C. Gutiérrez, K. Hohberg, D. Kalinkina, P. Kardol, A. Kergunteuil, G. Korthals, V. Krashevska, A. Kudrin, Q. Li, W. Liang, M. Magilton, M. Marais, J. A. R. Martín, E. Matveeva, E. H. Mayad, C. Mulder, P. Mullin, R. Neilson, D. Nguyen, U. N. Nielsen, H. Okada, J. E. P. Rius, K. Pan, V. Peneva, L. Pellissier, J. C. P. da Silva, C. Pitteloud, T. O. Powers, K. Powers, C. Quist, S. Rasmann, S. S. Moreno, S. Scheu, H. Setälä, A. Sushchuk, A. Tiunov, J. Trap, W. van der Putten, M. Vestergård, C. Villenave, L. Waeyenberge, D. H.Wall, R. Wilschut, D. Wright, J. Yang, T. W. Crowther (2019). Soil nematode abundance and functional group composition at a global scale. *Nature*, doi:10.1038/s41586-019-1418-6.
+
+<!-- Crowther, T.W., **J. van den Hoogen**, J. Wan, M. A. Mayes, A. D. Keiser, L. Mo,C. Averill, D. S. Maynard (2019). The global soil community and its influence on biogeochemistry. *Science*, doi:xxx -->
+
+Bastin, J. F., E. Clark, T. Elliott, S. Hart, **J. van den Hoogen**, I. Hordijk, H. Ma, S. Majumder, G. Manoli, J. Maschler, L. Mo, D. Routh, K. Yu, C. M. Zohner and T. W. Crowther (2019). Understanding climate change from a global analysis of city analogues. *PLoS One*, doi:10.1371/journal.pone.0217592
+
+A full list of publications is available on [Google scholar](https://scholar.google.com/citations?user=0Pl8Q1EAAAAJ&hl=en).
+
+## Wageningen University
+
+### Selected publications 
+**van den Hoogen, J**. and F. Govers (2018). GPCR-bigrams: Enigmatic signaling components in oomycetes. *PLoS Pathogens*, doi:10.1371/journal.ppat.1007064
+
+**van den Hoogen, J.**, N. Verbeek-de Kruif and F. Govers (2018). The G-protein gamma subunit of *Phytophthora infestans* is involved in sporangial development. *Fungal Genetics and Biology*, doi:10.1016/j.fgb.2018.04.012
+
+**van den Hoogen, D. J.**, H. J. G. Meijer, M. F. Seidl and F. Govers (2018). The ancient link between G-protein coupled receptors and C-terminal phospholipid kinase domains. *mBio*, doi:10.1128/mBio.02119-17
+
+Robin van Velzen, Rens Holmer, Fengjiao Bu, Luuk Rutten, Arjan van Zeijl, Wei Liu, Luca Santuari, Qingqin Cao, Trupti Sharma, Defeng Shen, Yuda Roswanjaya, Titis A. K. Wardhani, Maryam Seifi Kalhor, Joelle Jansen, **Johan van den Hoogen**, Berivan Güngör, Marijke Hartog, Jan Hontelez, Jan Verver, Wei-Cai Yang, Elio Schijlen, Rimi Repin, Menno Schilthuizen, M. Eric Schranz, Renze Heidstra, Kana Miyata, Elena Fedorova, Wouter Kohlen, Ton Bisseling, Sandra Smit, and Rene Geurts (2018). Comparative genomics of the nonlegume *Parasponia* reveals insights into evolution of nitrogen-fixing rhizobium symbioses. *PNAS*, doi:10.1073/pnas.1721395115
+
+Rahul Sharma, Xiaojuan Xia, Liliana M. Cano, Edouard Evangelisti, Eric Kemen, Howard Judelson, Stan Oome, Christine Sambles, **D. Johan van den Hoogen**, Miloslav Kitner, Joël Klein, Harold J. G. Meijer, Otmar Spring, Joe Win, Reinhard Zipper, Helge B. Bode, Francine Govers, Sophien Kamoun, Sebastian Schornack, David J. Studholme, Guido Van den Ackerveken, and Marco Thines (2015). Genome analyses of the sunflower pathogen *Plasmopara halstedi*i provide insights into effector evolution in downy mildews and *Phytophthora.* *BMC Genomics*, doi:10.1186/s12864-015-1904-7
+
+### Preprints
+Marco Thines, Rahul Sharma, Sander YA Rodenburg, Anna Gogleva, Howard S Judelson, Xiaojuan Xia, **Johan van den Hoogen**, Miloslav Kitner, Joël Klein, Manon Neilen, Dick de Ridder, Michael F Seidl, Guido Van den Ackerveken, Francine Govers, Sebastian Schornack, David J Studholme (2019). The genome of *Peronospora belbahri*i reveals high heterozygosity, a low number of canonical effectors and CT-rich promoters *bioRxiv*, doi:10.1101/721027
+
+**van den Hoogen, J.** and F. Govers (2018). Attempts to implement CRISPR/Cas9 for genome editing in the oomycete *Phytophthora infestans*. *bioRxiv*, doi:10.1101/274829
+
+
+
+

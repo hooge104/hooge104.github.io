@@ -7,12 +7,11 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
 
-<title>index.utf8.md</title>
+<title>README.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -23,8 +22,6 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -248,6 +245,18 @@ $(document).ready(function () {
 }
 </style>
 
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
 <!-- code folding -->
 
 
@@ -271,12 +280,15 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Johan van den Hoogen</a>
+      <a class="navbar-brand" href="index.html">Emily C. Zabor</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="research.html">Research</a>
+  <a href="research.html">Writing</a>
+</li>
+<li>
+  <a href="talks.html">Speaking</a>
 </li>
 <li>
   <a href="software.html">Programming</a>
@@ -293,19 +305,19 @@ $(document).ready(function () {
   </a>
 </li>
 <li>
-  <a href="http://github.com/hooge104">
+  <a href="http://github.com/zabore">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://twitter.com/johandehoogen">
+  <a href="https://twitter.com/zabormetrics">
     <span class="fa fa-twitter fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://www.linkedin.com/in/johanvandenhoogen">
+  <a href="https://www.linkedin.com/in/emily-zabor-59b902b7/">
     <span class="fa fa-linkedin fa-lg"></span>
      
   </a>
@@ -323,11 +335,9 @@ $(document).ready(function () {
 </div>
 
 
-<p><link rel="stylesheet" href="styles.css" type="text/css"></p>
-<p><img src="images/johan.jpg" style="width:25%; border:10px solid; margin-right: 20px" align="left"></p>
-<p>I am a senior scientist at <a href="https://www.crowtherlab.com/">Crowtherlab</a>.</p>
-<p>I graduated from <a href="http://www.sph.umn.edu/academics/divisions/biostatistics/">Wageningen University</a> with a MS in biotechnology in 2012, specializing in molecular biolgy. In 2018 I finished my PhD cellular signaling in the potato late blight pathogen <i>Phytophthora infestans</i> in 2018.</p>
-<p>My full CV is available <a href="files/CV_Johan_van_den_Hoogen.pdf">here</a>, Google Scholar <a href="https://scholar.google.com/citations?user=0Pl8Q1EAAAAJ&amp;hl=en">here</a>.</p>
+<div id="zabore.github.io" class="section level1">
+<h1>zabore.github.io</h1>
+</div>
 
 
 
@@ -346,23 +356,6 @@ $(document).ready(function () {
 
 
 </script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
-<!-- code folding -->
-
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
