@@ -7,6 +7,6 @@ I am a senior scientist at the [Crowther Lab](https://www.crowtherlab.com/). On 
 
 <img src="files/nematodes_100g_soil-01.png" style="width:35%; align="center">
 
-I graduated from [Wageningen University](http://www.sph.umn.edu/academics/divisions/biostatistics/) with a MS in biotechnology in 2012, specializing in molecular biolgy. In 2018 I finished my PhD cellular signaling in the potato late blight pathogen <i>Phytophthora infestans</i> in 2018.
+I graduated from Wageningen University with a MS in biotechnology in 2012, specializing in molecular biolgy. In 2018 I finished my PhD cellular signaling in the potato late blight pathogen <i>Phytophthora infestans</i> in 2018.
 
 My Google Scholar is [here](https://scholar.google.com/citations?user=0Pl8Q1EAAAAJ&hl=en).
