@@ -3,9 +3,9 @@
 
 <link rel="stylesheet" href="styles.css" type="text/css">
 
-<!-- <img src="images/johan.jpg" style="width:25%; border:10px solid; margin-right: 20px" align="left"> -->
+I am a senior scientist at the [Crowther Lab](https://www.crowtherlab.com/). On a daily basis, I help colleagues with global mapping projects, collect and process data, write papers, run the lab and make sure the coffee machine is working (purely out of own interest). My interest is in soil microbiology, investigating the function and activity of soil microbes on ecological relevant processes such as carbon and nutrient cycling. However, before we can say anything about the scale and significance of microbial contributions to global carbon and nutrient cycling, we need to know where these microbes are located. So, we make maps. Like this one: 
 
-I am a senior scientist at the [Crowther Lab](https://www.crowtherlab.com/). I help colleagues with global mapping projects, collect and process data, write papers, run the lab and make sure the coffee machine is working. 
+<img src="files/nematodes_100g_soil-01.png" style="width:35%; align="center">
 
 I graduated from [Wageningen University](http://www.sph.umn.edu/academics/divisions/biostatistics/) with a MS in biotechnology in 2012, specializing in molecular biolgy. In 2018 I finished my PhD cellular signaling in the potato late blight pathogen <i>Phytophthora infestans</i> in 2018.
 
