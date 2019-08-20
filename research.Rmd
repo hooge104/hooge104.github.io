@@ -8,6 +8,7 @@ output:
 <link rel="stylesheet" href="styles.css" type="text/css">
 
 ## Crowther Lab, ETH Zürich
+A full list of publications is available on [Google scholar](https://scholar.google.com/citations?user=0Pl8Q1EAAAAJ&hl=en).
 
 ### Selected publications
 
@@ -16,8 +17,6 @@ output:
 Crowther, T.W., **J. van den Hoogen**, J. Wan, M. A. Mayes, A. D. Keiser, L. Mo,C. Averill, D. S. Maynard (2019). The global soil community and its influence on biogeochemistry. *Science*, (in press)
 
 Bastin, J. F., E. Clark, T. Elliott, S. Hart, **J. van den Hoogen**, I. Hordijk, H. Ma, S. Majumder, G. Manoli, J. Maschler, L. Mo, D. Routh, K. Yu, C. M. Zohner and T. W. Crowther (2019). Understanding climate change from a global analysis of city analogues. *PLoS One*, doi:10.1371/journal.pone.0217592
-
-A full list of publications is available on [Google scholar](https://scholar.google.com/citations?user=0Pl8Q1EAAAAJ&hl=en).
 
 ## Wageningen University
 
