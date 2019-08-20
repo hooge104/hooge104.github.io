@@ -3,13 +3,13 @@
 
 <link rel="stylesheet" href="styles.css" type="text/css">
 
-<img src="images/johan.jpg" style="width:25%; border:10px solid; margin-right: 20px" align="left">
+<!-- <img src="images/johan.jpg" style="width:25%; border:10px solid; margin-right: 20px" align="left"> -->
 
-I am a senior scientist at [Crowtherlab](https://www.crowtherlab.com/). 
+I am a senior scientist at the [Crowther Lab](https://www.crowtherlab.com/). 
 
 I graduated from [Wageningen University](http://www.sph.umn.edu/academics/divisions/biostatistics/) with a MS in biotechnology in 2012, specializing in molecular biolgy. In 2018 I finished my PhD cellular signaling in the potato late blight pathogen <i>Phytophthora infestans</i> in 2018.
 
 
-My full CV is available [here](files/CV_Johan_van_den_Hoogen.pdf), Google Scholar [here](https://scholar.google.com/citations?user=0Pl8Q1EAAAAJ&hl=en).
+Google Scholar [here](https://scholar.google.com/citations?user=0Pl8Q1EAAAAJ&hl=en).
 
-
+<!-- My full CV is available [here](files/CV_Johan_van_den_Hoogen.pdf),  -->
