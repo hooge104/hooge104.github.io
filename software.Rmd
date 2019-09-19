@@ -5,7 +5,7 @@
 
 ## Code and data
 
-- [`nematode_global`](https://gitlab.ethz.ch/devinrouth/crowther_lab_nematodes): data and code used for our study on global biogeographic patterns of soil nematodes. [`full text here`](https://nature.com/articles/s41586-019-1418-6).
+- [`nematode_global`](https://gitlab.ethz.ch/devinrouth/crowther_lab_nematodes): data and code used for our study on global biogeographic patterns of soil nematodes. [`Full text here`](https://nature.com/articles/s41586-019-1418-6).
 - [`nematode_volume`](https://github.com/hooge104/nematode_volume_calculations): calculating the volume of the world's soil nematodes. In total, there are `1337.603` Billion cans of worms on the planet.
 - [`color_palettes`](https://hooge104.github.io/color_palettes.html): selected color palettes that could be useful for geospatial mapping projects.
 - [`future_cities`](https://github.com/hooge104/future_cities): a `Shiny` app showing the future climates of world's major cities.
