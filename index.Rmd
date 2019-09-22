@@ -4,7 +4,7 @@
 ## Current
 I am a scientist at the [Crowther Lab](https://www.crowtherlab.com/). Here, I help colleagues with global mapping projects, collect and process data, write papers, run the lab and make sure the coffee machine keeps working (purely out of own interest). My interest is in soil microbiology, investigating the function and activity of soil microbes in ecological processes, and carbon and nutrient cycling. To be able to say anything about the scale and significance of microbial contributions to global carbon and nutrient cycling, we need to know where all these microbes are located. So, we make maps. Like this one, showing the distribution patterns of [soil nematodes](https://www.nature.com/articles/s41586-019-1418-6), the most abundant animals on  Earth: 
 
-<img src="images/nematodes_100g_soil-01.png" style="width:75%" align="top" alt="Van den Hoogen et al. 2019"> 
+<img src="images/nematodes_gall_with_legend.png" style="width:75%" align="top" alt="Van den Hoogen et al. 2019"> 
 
 My Google Scholar is [here](https://scholar.google.com/citations?user=0Pl8Q1EAAAAJ&hl=en).
 
