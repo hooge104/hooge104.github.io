@@ -9,4 +9,4 @@ I am a scientist at the [Crowther Lab](https://www.crowtherlab.com/). On a daily
 My Google Scholar is [here](https://scholar.google.com/citations?user=0Pl8Q1EAAAAJ&hl=en).
 
 ### What I did before
-I graduated from Wageningen University with a MSc in biotechnology in 2012, specializing in molecular biolgy. In 2018 I finished my PhD on cellular signaling in the potato late blight pathogen <i>Phytophthora infestans</i> in 2018. My thesis is accessible via the [WUR library](https://library.wur.nl/WebQuery/wda/lang/2241772).
+I graduated from Wageningen University with a MSc in biotechnology in 2012, specializing in molecular biolgy. In 2018 I finished my PhD on cellular signaling in the potato late blight pathogen <i>Phytophthora infestans</i>, and explored the options to implement CRISPR/Cas9 for gene editing. My thesis is accessible via the [WUR library](https://library.wur.nl/WebQuery/wda/lang/2241772).
