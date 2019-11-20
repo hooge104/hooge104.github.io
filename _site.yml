@@ -3,7 +3,7 @@ output_dir: "."
 navbar:
   title: "Johan van den Hoogen"
   left:
-    - text: "Reseacrch"
+    - text: "Research"
       href: index.html
     - text: "About"
       href: about.html
