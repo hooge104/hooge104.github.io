@@ -20,9 +20,6 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -90,7 +87,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -255,63 +251,6 @@ $(document).ready(function () {
 
 
 
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-
 
 </head>
 
@@ -319,16 +258,6 @@ div.tocify {
 
 
 <div class="container-fluid main-container">
-
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -390,35 +319,19 @@ div.tocify {
 </div>
 
 
-<p><link rel="stylesheet" href="styles.css" type="text/css"></p>
-<div id="crowther-lab-eth-zurich" class="section level2">
-<h2>Crowther Lab, ETH Zürich</h2>
-<p>A full list of publications is available on <a href="https://scholar.google.com/citations?user=0Pl8Q1EAAAAJ&amp;hl=en">Google Scholar</a>.</p>
-<!-- ### Selected publications -->
-<p><strong>van den Hoogen, J</strong>, S. Geisen, D. Routh, H. Ferris, W. Traunspurger, D. Wardle, R. de Goede, B. Adams, W. Ahmad, W. S. Andriuzzi, R. D. Bardgett, M. Bonkowski, R. Campos-Herrera, J. E. Cares, T. Caruso, L. de B. Caixeta, X. Chen, S. dos S. da R. Costa, R. Creamer, J. M. da C. Castro, M. Dam, D. Djigal, M. Escuer, B. Griffiths, C. Gutiérrez, K. Hohberg, D. Kalinkina, P. Kardol, A. Kergunteuil, G. Korthals, V. Krashevska, A. Kudrin, Q. Li, W. Liang, M. Magilton, M. Marais, J. A. R. Martín, E. Matveeva, E. H. Mayad, C. Mulder, P. Mullin, R. Neilson, D. Nguyen, U. N. Nielsen, H. Okada, J. E. P. Rius, K. Pan, V. Peneva, L. Pellissier, J. C. P. da Silva, C. Pitteloud, T. O. Powers, K. Powers, C. Quist, S. Rasmann, S. S. Moreno, S. Scheu, H. Setälä, A. Sushchuk, A. Tiunov, J. Trap, W. van der Putten, M. Vestergård, C. Villenave, L. Waeyenberge, D. H.Wall, R. Wilschut, D. Wright, J. Yang, T. W. Crowther (2019). Soil nematode abundance and functional group composition at a global scale. <em>Nature</em>, doi: <a href="https://www.nature.com/articles/s41586-019-1418-6">10.1038/s41586-019-1418-6</a></p>
-<p>Crowther, T.W., <strong>J. van den Hoogen</strong>, J. Wan, M. A. Mayes, A. D. Keiser, L. Mo, C. Averill, D. S. Maynard (2019). The global soil community and its influence on biogeochemistry. <em>Science</em>, doi: <a href="https://science.sciencemag.org/content/365/6455/eaav0550">10.1126/science.aav0550</a></p>
-<p>H.R.P. Phillips, C.A. Guerra, M.L.C. Bartz, M.J.I. Briones, G. Brown, T.W. Crowther, Olga Ferlian, K.B. Gongalsky, <strong>J. van den Hoogen</strong>, et al., E.K. Cameron, N. Eisenhauer (2019). Global distribution of earthworm diversity. <em>Science</em> 366, 480–485. doi: <a href="https://doi.org/10.1126/science.aax4851">10.1126/science.aax4851</a></p>
-<p>Bastin, J. F., E. Clark, T. Elliott, S. Hart, <strong>J. van den Hoogen</strong>, I. Hordijk, H. Ma, S. Majumder, G. Manoli, J. Maschler, L. Mo, D. Routh, K. Yu, C. M. Zohner and T. W. Crowther (2019). Understanding climate change from a global analysis of city analogues. <em>PLoS One</em>, doi: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0217592">10.1371/journal.pone.0217592</a></p>
-</div>
-<div id="wageningen-university" class="section level2">
-<h2>Wageningen University</h2>
-<!-- ### Selected publications -->
-<p><strong>van den Hoogen, J</strong>. and F. Govers (2018). GPCR-bigrams: Enigmatic signaling components in oomycetes. <em>PLoS Pathogens</em>, doi: <a href="https://journals.plos.org/plospathogens/article?id=10.1371/journal.ppat.1007064">10.1371/journal.ppat.1007064</a></p>
-<p><strong>van den Hoogen, J.</strong>, N. Verbeek-de Kruif and F. Govers (2018). The G-protein gamma subunit of <em>Phytophthora infestans</em> is involved in sporangial development. <em>Fungal Genetics and Biology</em>, doi: <a href="https://www.sciencedirect.com/science/article/pii/S1087184518300719">10.1016/j.fgb.2018.04.012</a></p>
-<p><strong>van den Hoogen, D. J.</strong>, H. J. G. Meijer, M. F. Seidl and F. Govers (2018). The ancient link between G-protein coupled receptors and C-terminal phospholipid kinase domains. <em>mBio</em>, doi: <a href="https://mbio.asm.org/content/9/1/e02119-17">10.1128/mBio.02119-17</a></p>
-<p>R. van Velzen, R. Holmer, F. Bu, L Rutten, A. van Zeijl, W. Liu, L. Santuari, Q. Cao, T. Sharma, D. Shen, Y. Roswanjaya, T. A. K. Wardhani, M. S. Kalhor, J. Jansen, <strong>J. van den Hoogen</strong>, B. Güngör, M. Hartog, Jan Hontelez, J. Verver, W-C. Yang, E. Schijlen, R. Repin, M. Schilthuizen, M. E. Schranz, R. Heidstra, K. Miyata, E. Fedorova, W. Kohlen, T. Bisseling, S. Smit, and R. Geurts (2018). Comparative genomics of the nonlegume <em>Parasponia</em> reveals insights into evolution of nitrogen-fixing rhizobium symbioses. <em>PNAS</em>, doi: <a href="https://www.pnas.org/content/115/20/E4700">10.1073/pnas.1721395115</a></p>
-<p>R. Sharma, X. Xia, L. M. Cano, E. Evangelisti, E. Kemen, H. Judelson, S. Oome, C. Sambles, <strong>D. J. van den Hoogen</strong>, M. Kitner, J. Klein, H. J. G. Meijer, O. Spring, J. Win, R. Zipper, H. B. Bode, F. Govers, S. Kamoun, S. Schornack, D. J. Studholme, G. Van den Ackerveken, and M. Thines (2015). Genome analyses of the sunflower pathogen <em>Plasmopara halstedii</em> provide insights into effector evolution in downy mildews and <em>Phytophthora.</em> <em>BMC Genomics</em>, doi: <a href="https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-015-1904-7">10.1186/s12864-015-1904-7</a></p>
-<div id="preprints" class="section level3">
-<h3>Preprints</h3>
-<p>M. Thines, R. Sharma, S. Y. A. Rodenburg, A. Gogleva, H. S. Judelson, X. Xia, <strong>J. van den Hoogen</strong>, M. Kitner, J. Klein, M. Neilen, D. de Ridder, M. F. Seidl, G. van den Ackerveken, F. Govers, S. Schornack, D. J. Studholme (2019). The genome of <em>Peronospora belbahrii</em> reveals high heterozygosity, a low number of canonical effectors and CT-rich promoters <em>bioRxiv</em>, doi: <a href="https://www.biorxiv.org/content/10.1101/721027v1">10.1101/721027</a></p>
-<p><strong>van den Hoogen, J.</strong> and F. Govers (2018). Attempts to implement CRISPR/Cas9 for genome editing in the oomycete <em>Phytophthora infestans</em>. <em>bioRxiv</em>, doi: <a href="https://www.biorxiv.org/content/10.1101/274829v2">10.1101/274829</a></p>
+<div id="current" class="section level2">
+<h2>Current</h2>
+<p>I am a scientist at the <a href="https://www.crowtherlab.com/">Crowther Lab</a>. On a daily basis, I help colleagues with global mapping projects, collect and process data, write papers, run the lab and make sure the coffee machine keeps working (purely out of own interest). My main interest is in soil microbiology, studying the function and activity of soil microbes in ecological processes, and carbon and nutrient cycling. To be able to say anything about the scale and significance of microbial contributions to global carbon and nutrient cycling, we need to know where all these microbes are located. So, we make maps. Like this one, showing the distribution patterns of <a href="https://www.nature.com/articles/s41586-019-1418-6">soil nematodes</a>, the most abundant animals on Earth:</p>
+<p><img src="images/Fig3_final_updated.png" style="width:75%" align="top" alt="Van den Hoogen et al. 2019"></p>
+<p>My Google Scholar is <a href="https://scholar.google.com/citations?user=0Pl8Q1EAAAAJ&amp;hl=en">here</a>.</p>
+<div id="what-i-did-before" class="section level3">
+<h3>What I did before</h3>
+<p>I graduated from Wageningen University with a MSc in biotechnology in 2012, specializing in molecular biolgy. In 2018 I finished my PhD on cellular signaling in the potato late blight pathogen <i>Phytophthora infestans</i>, and explored the options to implement CRISPR/Cas9 for gene editing. My thesis is accessible via the <a href="https://library.wur.nl/WebQuery/wda/lang/2241772">WUR library</a>.</p>
 </div>
 </div>
 
 
 
-</div>
-</div>
 
 </div>
 
@@ -451,32 +364,6 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
