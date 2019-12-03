@@ -16,7 +16,9 @@ A full list of publications is available on [Google Scholar](https://scholar.goo
 
 Crowther, T.W., **J. van den Hoogen**, J. Wan, M. A. Mayes, A. D. Keiser, L. Mo, C. Averill, D. S. Maynard (2019). The global soil community and its influence on biogeochemistry. *Science*, doi: [10.1126/science.aav0550](https://science.sciencemag.org/content/365/6455/eaav0550)
 
-H.R.P. Phillips, C.A. Guerra, M.L.C. Bartz, M.J.I. Briones, G. Brown, T.W. Crowther, Olga Ferlian, K.B. Gongalsky, **J. van den Hoogen**, et al., E.K. Cameron, N. Eisenhauer (2019). Global distribution of earthworm diversity. *Science* 366, 480–485. doi: [10.1126/science.aax4851](https://doi.org/10.1126/science.aax4851)
+H.R.P. Phillips, C.A. Guerra, M.L.C. Bartz, M.J.I. Briones, G. Brown, T.W. Crowther, Olga Ferlian, K.B. Gongalsky, **J. van den Hoogen**, et al., E.K. Cameron and N. Eisenhauer (2019). Global distribution of earthworm diversity. *Science*, doi: [10.1126/science.aax4851](https://doi.org/10.1126/science.aax4851)
+
+G.R. Smith, T.W. Crowther, N. Eisenhauer and **J. van den Hoogen** (2019). Building a global database of soil microbial biomass and function: a call for collaboration. *Soil Organisms*, doi: [10.25674/so91iss3pp140](http://soil-organisms.org/index.php/SO/article/view/112)
 
 Bastin, J. F., E. Clark, T. Elliott, S. Hart, **J. van den Hoogen**, I. Hordijk, H. Ma, S. Majumder, G. Manoli, J. Maschler, L. Mo, D. Routh, K. Yu, C. M. Zohner and T. W. Crowther (2019). Understanding climate change from a global analysis of city analogues. *PLoS One*, doi: [10.1371/journal.pone.0217592](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0217592)
 
