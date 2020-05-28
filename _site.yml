@@ -3,12 +3,12 @@ output_dir: "."
 navbar:
   title: "Johan van den Hoogen"
   left:
-    - text: "Research"
-      href: index.html
+    - text: "CV"
+      href: cv.html
     - text: "About"
-      href: about.html
+      href: index.html
     - text: "Code and Data"
-      href: software.html
+      href: code_data.html
   right:
     - icon: fa-envelope fa-lg
       href: contact.html
