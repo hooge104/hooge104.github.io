@@ -6,12 +6,12 @@ output: html_document
 <link rel="stylesheet" href="site_libs/academicons-1.8.6/css/academicons.css"/>
 
 ## Current
-I am a scientist at the [Crowther Lab](https://www.crowtherlab.com/). On a daily basis, I help colleagues with global mapping projects, collect and process data, write papers, run the lab and make sure the coffee machine keeps working (purely out of own interest). My main interest is in soil microbiology, studying the function and activity of soil microbes in ecological processes, and carbon and nutrient cycling. To be able to say anything about the scale and significance of microbial contributions to global carbon and nutrient cycling, we need to know where all these microbes are located. So, we make maps. Like this one, showing the distribution patterns of [soil nematodes](https://www.nature.com/articles/s41586-019-1418-6), the most abundant animals on  Earth: 
+I am a scientist at the [Crowther Lab](https://www.crowtherlab.com/). On a daily basis, I help colleagues with global mapping projects, collect and process data, write papers, run the lab and make sure the coffee machine keeps working (purely out of own interest). My main interest is in soil microbiology, studying the function and activity of soil microbes in ecological processes, and carbon and nutrient cycling. To be able to say something about the scale and significance of microbial contributions to global carbon and nutrient cycling, we need to know where all these microbes are located. So, we make maps. Like this one, showing the distribution patterns of [soil nematodes](https://www.nature.com/articles/s41586-019-1418-6), the most abundant animals on  Earth: 
 
 <img src="images/Fig3_final_updated.png" style="width:75%" align="top" alt="Van den Hoogen et al. 2019"> 
 
 My Google Scholar is [here](https://scholar.google.com/citations?user=0Pl8Q1EAAAAJ&hl=en).
 
 ### What I did before
-I graduated from Wageningen University with a MSc in biotechnology in 2012, specializing in molecular biolgy. In 2018 I finished my PhD on cellular signaling in the potato late blight pathogen <i>Phytophthora infestans</i>, and explored the options to implement CRISPR/Cas9 for gene editing. My thesis is accessible via the [WUR library](https://library.wur.nl/WebQuery/wda/lang/2241772).
+I am a molecular biologist by training. I graduated with MSc in biotechnology at Wageningen University in 2012 In 2018 I finished my PhD on cellular signaling in the potato late blight pathogen <i>Phytophthora infestans</i>, and explored the options to implement CRISPR/Cas9 for gene editing. My thesis is accessible via the [WUR library](https://library.wur.nl/WebQuery/wda/lang/2241772).
 
