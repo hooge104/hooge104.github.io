@@ -18,7 +18,9 @@ navbar:
       href: https://twitter.com/johandehoogen
     - icon: fa-linkedin fa-lg
       href: https://www.linkedin.com/in/johanvandenhoogen
+    - icon: ai ai-google-scholar-square ai-square
+      href: https://scholar.google.com/citations?user=0Pl8Q1EAAAAJ&hl=en
 output:
   html_document:
     theme: paper
-    css: 'styles.css'
+    css: ['styles.css', "site_libs/academicons-1.8.6/css/academicons.css"] 

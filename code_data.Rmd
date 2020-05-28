@@ -1,7 +1,10 @@
 ---
+title: "Code and data"
+output: html_document
 ---
 
 <link rel="stylesheet" href="styles.css" type="text/css">
+<link rel="stylesheet" href="site_libs/academicons-1.8.6/css/academicons.css"/>
 
 ## Code and data
 An incomplete list of the things I have been working on. All code and data associated with my publications should be available with the paper, contact me if you are looking for something in particular. 
