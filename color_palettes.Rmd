@@ -9,7 +9,9 @@ output:
     fig_retina: 2
 ---
 
-# Color palettes for Crowther Lab 
+# Color palette overview
+All code is ready to go for `R`. To use the color palettes for displaying purposes in `Javascript` (GEE) or `Python`, simply copy-paste the lists beneath the example images.
+
 ```{r, message=FALSE}
 library(RColorBrewer)
 library(viridis)
