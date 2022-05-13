@@ -51,7 +51,9 @@
             <div class="text" id="text" >
               <p><strong>Disclaimer</strong></p>
 
-              <p>This is a very simple tool that can help in route planning. On the left, the latest Sentinel 2 RGB data are displayed, on the pixels with potential snow cover are highlighted in red. This is not a real snow detection tool - it simply highlights pixels above an arbitrary threshold. Hence, clouds, buildings or other bright pixels can be &quot;detected&quot; as snow; and snow with a lot of debris on top of it might go undetected. Actual snow cover might differ significantly from what is predicted, or the data might be outdated. So, be careful and take none of these results for granted. Always use common sense, don&#39;t take any of these predictions as sole tour planning tool.</p>
+              <p>This is a very simple tool showing satellite data and potential snow cover side-to side, which can help in route planning. On the left, the latest Sentinel 2 RGB data are displayed, on the pixels with potential snow cover are highlighted in red. This is not a real snow detection tool - it simply highlights pixels above an arbitrary threshold. Hence, clouds, buildings or other bright pixels can be &quot;detected&quot; as snow; and snow with a lot of debris on top of it might go undetected. Actual snow cover might differ significantly from what is predicted, or the data might be outdated. So, be careful and take none of these results for granted. Always use common sense, don&#39;t take any of these predictions as sole tour planning tool.</p>
+
+              <p>The map is projected in EPSG3857 (Pseudo-Mercator) to keep computing time to a minimum. Not ideal, I know.</p>
 
               <p><span style="font-size:9px">For completeness: the information contained in this website is for general information purposes only. No representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose. Any reliance you place on such information is therefore strictly at your own risk. In no event we will be liable for any loss or damage including without limitation, indirect or consequential loss or damage, or any loss or damage whatsoever arising from loss of data or profits arising out of, or in connection with, the use of this website.</span></p>
 
@@ -62,7 +64,7 @@
                 {
                     center: [46.75, 8.5],
                     crs: L.CRS.EPSG3857,
-                    zoom: 12,
+                    zoom: 11,
                     zoomControl: true,
                     preferCanvas: false,
                 }
@@ -73,23 +75,45 @@
                 {"attribution":  "Map Data \u0026copy; \u003ca href=\"https://www.swisstopo.admin.ch/en/home.html\"\u003eFederal Office of Topography swisstopo\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             ).addTo(map);
 
-            var s2_tiles = L.tileLayer(
-                "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/c6883416ca34c278f256cb2471bca76a-9db1d7e8b038013e29969cb0ad44f47a/tiles/{z}/{x}/{y}",
+            var s2_tiles_latest = L.tileLayer(
+              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/d84e8d9a353056f43acdff7a8363e412-f8d0b4e3f29cc1c24b2459306c8ac886/tiles/{z}/{x}/{y}",
                 {"attribution": "\u0026copy; \u003ca href=\"https://earthengine.google.com/\"\u003eGoogle Earth Engine\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             ).addTo(map);
 
-            var snow_cover = L.tileLayer(
-                "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/01d5c4985ff4fc6d1d1f4d4df98bc661-662a2eec1c29618260f3dad18aca38bd/tiles/{z}/{x}/{y}",
+            var snow_cover_latest = L.tileLayer(
+              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/a9e8c13b394ecb6ce37d6cd833f7bbf1-f2159e83313f38044ea7e2e99addca78/tiles/{z}/{x}/{y}",
                 {"attribution": "\u0026copy; \u003ca href=\"https://earthengine.google.com/\"\u003eGoogle Earth Engine\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             ).addTo(map);
+
+            var s2_tiles_second = L.tileLayer(
+              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/523b0d1efe0eeff95838c6993e53d791-f4186adc41ecace2367207ebf47cf557/tiles/{z}/{x}/{y}",
+                {"attribution": "\u0026copy; \u003ca href=\"https://earthengine.google.com/\"\u003eGoogle Earth Engine\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            )//.addTo(map);
+
+            var snow_cover_second = L.tileLayer(
+              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/e901524ccb7ae5cc7e46a6936793322e-968f37c6fddce7dd58aa7d3b73cbdf02/tiles/{z}/{x}/{y}",
+                {"attribution": "\u0026copy; \u003ca href=\"https://earthengine.google.com/\"\u003eGoogle Earth Engine\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            )//.addTo(map);
+
+            // const provider = new window.GeoSearch.OpenStreetMapProvider();
+            // const search = new GeoSearch.GeoSearchControl({
+            //     provider: provider,
+            //     style: 'bar',
+            //     updateMap: true,
+            //     autoClose: true,
+            // }); // Include the search box with usefull params. Autoclose and updateMap in my case. Provider is a compulsory parameter.
+
+
 
             var layers = {
                 base_layers : {
                     "Swisstopo" : swiss_topo_tiles,
                 },
                 overlays :  {
-                    "Sentinel 2 2022-05-11" : s2_tiles,
-                    "Snow cover" : snow_cover,
+                  "Sentinel 2 2022-05-11" : s2_tiles_latest,
+                  "Sentinel 2 2022-05-09" : s2_tiles_second,
+                  "Snow cover 2022-05-11" : snow_cover_latest,
+                  "Snow cover 2022-05-09" : snow_cover_second,
                 },
             };
             L.control.layers(
@@ -98,6 +122,6 @@
                 {"autoZIndex": true, "collapsed": false, "position": "topright"}
             ).addTo(map);
 
-            L.control.sideBySide(s2_tiles, snow_cover).addTo(map);
+            L.control.sideBySide([s2_tiles_latest, s2_tiles_second], [snow_cover_latest, snow_cover_second]).addTo(map);
 
 </script>
