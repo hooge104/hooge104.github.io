@@ -23,25 +23,21 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_left {
+                #map {
                     position: absolute;
-                    width: 50.0%;
-                    height: 100.0%;
+                    width: 100.0%;
+                    height: 75.0%;
                     left: 0.0%;
                     top: 0.0%;
                 }
             </style>
-
-
-            <meta name="viewport" content="width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_right {
+                #text {
                     position: absolute;
-                    width: 50.0%;
+                    width: 100.0%;
                     height: 100.0%;
-                    left: 50.0%;
-                    top: 0.0%;
+                    left: 0.0%;
+                    top: 76.0%;
                 }
             </style>
 
@@ -51,6 +47,15 @@
 <body>
 
             <div class="folium-map" id="map" ></div>
+
+            <div class="text" id="text" >
+              <p><strong>Recent snow cover &quot;detection&quot;</strong></p>
+
+              <p>This a simple tool that shows Sentinel RGB and potential snow cover side-to-side.&nbsp;</p>
+
+              <p><strong>Disclaimer</strong></p>
+
+              <p>This is a very simple tool that can help in route planning. On the left, the latest Sentinel 2 RGB data are displayed, on the pixels with potential snow cover are highlighted in red. This is not a real snow detection tool - it simply highlights pixels above an arbitrary threshold. Hence, clouds, buildings or other bright pixels can be &quot;detected&quot; as snow; and snow with a lot of debris on top of it might go undetected. Actual snow cover might differ significantly from what is predicted, or the data might be outdated. So, be careful and take none of these results for granted. Always use common sense, don&#39;t take any of these predictions as sole tour planning tool.</p>
 
 </body>
 <script>
