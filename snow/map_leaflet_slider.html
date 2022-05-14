@@ -49,11 +49,18 @@
             <div class="folium-map" id="map" ></div>
 
             <div class="text" id="text" >
+              <p><strong>Snow cover &#39;detection&#39;</strong></p>
+
+              <p>This tool is aimed at trail runners and/or mountain bikers who want to go somewhere relatively high up in the mountains early in the seasons. This is a very simple tool showing satellite data and potential snow cover side-to side, which can help in route planning. On the left, the latest Sentinel 2 RGB data are displayed, on the pixels with potential snow cover are highlighted in red. Nothing fancy is done; simply all pixels with a signal above a super arbitrary threshold are considered to be &#39;snow covered&#39;. A way better solution is built by <a href="https://www.exolabs.ch/" target="_blank">Exolabs</a>, who&#39;s snow cover layers are built using observational data and models, and supply snow depth too. Yet, for whoever wants to know whether there&#39;s&nbsp;<em>any</em>&nbsp;snow left on the planned route, this janky thing might come in useful :)</p>
+
               <p><strong>Small print</strong></p>
 
-              <p>This is a very simple tool showing satellite data and potential snow cover side-to side, which can help in route planning. On the left, the latest Sentinel 2 RGB data are displayed, on the pixels with potential snow cover are highlighted in red. Please note that this is not a real snow detection tool - it simply highlights pixels above an arbitrary threshold. Hence, clouds, buildings or other bright pixels can be detected as snow; and snow covered by debris go undetected. Actual snow cover might differ significantly from what is predicted, and the data might be faulty or outdated. So, be careful and take none of these results for granted. Always use common sense, don&#39;t take any of these predictions as sole tour planning tool.</p>
+              <p>Please note that this is not a real snow detection tool - it simply highlights pixels above an arbitrary threshold. Hence, clouds, buildings or other bright pixels can be detected as snow; and snow covered by debris go undetected. Actual snow cover might differ significantly from what is predicted, and the data might be faulty or outdated. So, be careful and take none of these results for granted. Always use common sense, don&#39;t take any of these predictions as sole tour planning tool.</p>
 
-              <p>Copyright (c) Johan van den Hoogen 2022 - released under MIT License.</p></body>
+              <p>I cannot take any responsibility nor can I be held liable for any information displayed on this page.&nbsp;Any reliance you place on the displayed information is therefore strictly at your own risk.</p>
+
+              <p>Copyright (c) Johan van den Hoogen 2022 - released under MIT License</p>
+
 <script>
             var map = L.map(
                 "map",
