@@ -77,29 +77,19 @@
             ).addTo(map);
 
             var snow_cover_latest = L.tileLayer(
-              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/a9e8c13b394ecb6ce37d6cd833f7bbf1-f2159e83313f38044ea7e2e99addca78/tiles/{z}/{x}/{y}",
+              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/716986381775404aa6ef7e615c354d02-0f3ab78a7d8cf8516e8fb3cfd711b912/tiles/{z}/{x}/{y}",
                 {"attribution": "\u0026copy; \u003ca href=\"https://earthengine.google.com/\"\u003eGoogle Earth Engine\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             ).addTo(map);
 
             var s2_tiles_second = L.tileLayer(
               "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/523b0d1efe0eeff95838c6993e53d791-f4186adc41ecace2367207ebf47cf557/tiles/{z}/{x}/{y}",
                 {"attribution": "\u0026copy; \u003ca href=\"https://earthengine.google.com/\"\u003eGoogle Earth Engine\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            )//.addTo(map);
+            )
 
             var snow_cover_second = L.tileLayer(
-              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/e901524ccb7ae5cc7e46a6936793322e-968f37c6fddce7dd58aa7d3b73cbdf02/tiles/{z}/{x}/{y}",
+              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/0ac65977fb14fb072df7e1cbc2947c90-df1f634b74dfe42e8fe70fcede5dfd4c/tiles/{z}/{x}/{y}",
                 {"attribution": "\u0026copy; \u003ca href=\"https://earthengine.google.com/\"\u003eGoogle Earth Engine\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            )//.addTo(map);
-
-            // const provider = new window.GeoSearch.OpenStreetMapProvider();
-            // const search = new GeoSearch.GeoSearchControl({
-            //     provider: provider,
-            //     style: 'bar',
-            //     updateMap: true,
-            //     autoClose: true,
-            // }); // Include the search box with usefull params. Autoclose and updateMap in my case. Provider is a compulsory parameter.
-
-
+            )
 
             var layers = {
                 base_layers : {
@@ -115,7 +105,7 @@
             L.control.layers(
                 layers.base_layers,
                 layers.overlays,
-                {"autoZIndex": true, "collapsed": false, "position": "topright"}
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
             ).addTo(map);
 
             L.control.sideBySide([s2_tiles_latest, s2_tiles_second], [snow_cover_latest, snow_cover_second]).addTo(map);
