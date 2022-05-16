@@ -10,7 +10,8 @@ ee.Initialize()
 # Map
 map = folium.Map(location = [46.75, 8.5],
                  zoom_start = 10,
-                 tiles = None)
+                 tiles = None,
+                 min_zoom = 8)
 
 # Swisstopo layer
 folium.TileLayer(tiles = 'https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/{z}/{x}/{y}.jpeg',
@@ -142,13 +143,18 @@ rgbVis = {
 
 vis_params_snow = {'palette': ['#FF0000'], 'opacity': 0.3}
 
+# Get dates
+latestDate=latestImage.get('system:date').getInfo()
+secondDate=secondImage.get('system:date').getInfo()
+thirdDate=thirdImage.get('system:date').getInfo()
+
 # Add the image layer to the map and display it.
-map.add_ee_layer_showT(latestImage, rgbVis, 'Satellite '+latestImage.get('system:date').getInfo())
-map.add_ee_layer_showF(secondImage, rgbVis, 'Satellite '+secondImage.get('system:date').getInfo())
-map.add_ee_layer_showF(thirdImage, rgbVis, 'Satellite '+thirdImage.get('system:date').getInfo())
-map.add_ee_layer_showT(constantImgLatest, vis_params_snow, 'Snow cover '+latestImage.get('system:date').getInfo())
-map.add_ee_layer_showF(constantImgSecond, vis_params_snow, 'Snow cover '+secondImage.get('system:date').getInfo())
-map.add_ee_layer_showF(constantImgThird, vis_params_snow, 'Snow cover '+thirdImage.get('system:date').getInfo())
+map.add_ee_layer_showT(latestImage, rgbVis, 'Satellite '+latestDate)
+map.add_ee_layer_showF(secondImage, rgbVis, 'Satellite '+secondDate)
+map.add_ee_layer_showF(thirdImage, rgbVis, 'Satellite '+thirdDate)
+map.add_ee_layer_showT(constantImgLatest, vis_params_snow, 'Snow cover '+latestDate)
+map.add_ee_layer_showF(constantImgSecond, vis_params_snow, 'Snow cover '+secondDate)
+map.add_ee_layer_showF(constantImgThird, vis_params_snow, 'Snow cover '+thirdDate)
 
 # Add layer control
 folium.map.LayerControl(collapsed=True).add_to(map)
