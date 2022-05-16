@@ -1,24 +1,21 @@
 # Import the modules of interest
 import pandas as pd
-import numpy as np
 import folium
 import ee
-from folium.plugins import DualMap
 import time
 from bs4 import BeautifulSoup
-import re
 
 ee.Initialize()
 
 # Map
 map = folium.Map(location = [46.75, 8.5],
-                 zoom_start = 8)
+                 zoom_start = 8, tiles = None)
 
-# Swisstopo layers; layer stored as jpeg tiles on wmts server
+# Swisstopo layer
 folium.TileLayer(tiles = 'https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/{z}/{x}/{y}.jpeg',
-                 attr='Swisstopo',
+                 attr='&copy <a href=https://www.swisstopo.admin.ch/en/home.html">Federal Office of Topography swisstopo</a>',
                  name = 'Swisstopo',
-                 overlay = True,
+                 overlay = False,
                  control = True).add_to(map)
 
 # Function to add ee.Image() to map
@@ -112,11 +109,12 @@ s2day = mosaicBy(s2);
 listOfImages = s2day.toList(s2day.size()).reverse()
 
 latestImage = ee.Image(listOfImages.get(0))
-
 secondImage = ee.Image(listOfImages.get(1))
+thirdImage = ee.Image(listOfImages.get(2))
 
 constantImgLatest = (latestImage.updateMask(latestImage.gt(0.27))).divide(latestImage.updateMask(latestImage.gt(0.27))).select(1)
 constantImgSecond = (secondImage.updateMask(secondImage.gt(0.27))).divide(secondImage.updateMask(secondImage.gt(0.27))).select(1)
+constantImgThird = (thirdImage.updateMask(thirdImage.gt(0.27))).divide(thirdImage.updateMask(thirdImage.gt(0.27))).select(1)
 
 # Visualisation parameters
 rgbVis = {
@@ -128,14 +126,17 @@ rgbVis = {
 vis_params_snow = {'palette': ['#FF0000'], 'opacity': 0.3}
 
 # Add the image layer to the map and display it.
-map.add_ee_layer(latestImage, rgbVis, 'Sentinel 2 '+latestImage.get('system:date').getInfo())
-map.add_ee_layer(secondImage, rgbVis, 'Sentinel 2 '+secondImage.get('system:date').getInfo())
+map.add_ee_layer(latestImage, rgbVis, 'Satellite '+latestImage.get('system:date').getInfo())
+map.add_ee_layer(secondImage, rgbVis, 'Satellite '+secondImage.get('system:date').getInfo())
+map.add_ee_layer(thirdImage, rgbVis, 'Satellite '+thirdImage.get('system:date').getInfo())
 map.add_ee_layer(constantImgLatest, vis_params_snow, 'Snow cover '+latestImage.get('system:date').getInfo())
 map.add_ee_layer(constantImgSecond, vis_params_snow, 'Snow cover '+secondImage.get('system:date').getInfo())
+map.add_ee_layer(constantImgThird, vis_params_snow, 'Snow cover '+thirdImage.get('system:date').getInfo())
 
 # Add layer control
 folium.map.LayerControl(collapsed=False).add_to(map)
 
+# Hard-code map._id to make it referenceable
 map._id = "1"
 
 # Write to html file
@@ -147,11 +148,9 @@ with open('map_gee_blurbs.html') as fp:
 
 # Get script tag
 data = soup.find_all("script")[5]
-# data = data.string.replace('\n                ','').split('var ')
-# data.pop(0)
 
 # Get references for tiles
-tile_refs = data.string.split('var ')[8].split('{')[3].split('\n')[1:6]
+tile_refs = data.string.split('var ')[-1].split('{')[3].split('\n')[1:6]
 tile_refs = [string.replace('                    ', '').replace('"','').replace(',','').split(' : ') for string in tile_refs]
 df = pd.DataFrame(tile_refs, columns = ['tile', 'ref'])
 
@@ -167,7 +166,6 @@ control_string = control_string.replace("'", "")
 data = data.string.replace('<script>', '').replace('</script>', '')
 
 # Write to js file
-# stringToWrite = data + 'L.control.sideBySide([s2_tiles_latest, s2_tiles_second], [snow_cover_latest, snow_cover_second]).addTo(map);'
 stringToWrite = data + control_string
 
 with open('map.js', 'w') as f:
