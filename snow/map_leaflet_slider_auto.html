@@ -8,7 +8,7 @@
         </script>
 
     <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
-    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <style>#map_1 {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -26,7 +26,7 @@
                 <link rel="preconnect" href="https://fonts.googleapis.com">
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
                 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">            <style>
-                #map {
+                #map_1 {
                     position: absolute;
                     width: 100.0%;
                     height:93.0%;
@@ -52,7 +52,7 @@
 </head>
 <body>
 
-            <div class="folium-map" id="map" ></div>
+            <div class="folium-map" id="map_1" ></div>
 
             <div class="text" id="text" >
               <p style="text-align:justify"><strong>General info</strong></p>
@@ -73,72 +73,15 @@
 
               <p style="text-align:right"><u>Copyright (c) Johan van den Hoogen 2022 - released under MIT License</u></p>
     <!-- <script>
-        var map = L.map(
-            "map",
-            {
-                center: [46.6, 8.6],
-                crs: L.CRS.EPSG3857,
-                zoom: 11,
-                zoomControl: true,
-                preferCanvas: false,
-            }
-        );
-    </script>
-    <script src = "map.js"></script> -->
-<script>
-            var map = L.map(
-                "map",
-                {
-                    center: [46.6, 8.6],
-                    crs: L.CRS.EPSG3857,
-                    zoom: 11,
-                    zoomControl: true,
-                    preferCanvas: false,
-                }
-            );
-
-            var swiss_topo_tiles = L.tileLayer(
-                "https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/{z}/{x}/{y}.jpeg",
-                {"attribution":  "Map Data \u0026copy; \u003ca href=\"https://www.swisstopo.admin.ch/en/home.html\"\u003eFederal Office of Topography swisstopo\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map);
-
-            var s2_tiles_latest = L.tileLayer(
-              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/b7ed835eb14a3c763fe7e494aa2ee241-1f74f6463e3982e54b4a8c479f064963/tiles/{z}/{x}/{y}",
-                {"attribution": "\u0026copy; \u003ca href=\"https://earthengine.google.com/\"\u003eGoogle Earth Engine\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map);
-
-            var snow_cover_latest = L.tileLayer(
-              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/4c0e942996fcb69e47d6fc4a927b5b18-1b3b7a7bb8a574e6fd0f5cdbb53da6de/tiles/{z}/{x}/{y}",
-                {"attribution": "\u0026copy; \u003ca href=\"https://earthengine.google.com/\"\u003eGoogle Earth Engine\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map);
-
-            var s2_tiles_second = L.tileLayer(
-              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/ac2b5deb79998c47baeab5eecba43f6a-81ab2fcc54721dacb24f9b81a54e1f3a/tiles/{z}/{x}/{y}",
-                {"attribution": "\u0026copy; \u003ca href=\"https://earthengine.google.com/\"\u003eGoogle Earth Engine\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            )
-
-            var snow_cover_second = L.tileLayer(
-              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/cb3fe5bb887f411f3551a8373a4513c6-143e281d90057f75398a682feb94864c/tiles/{z}/{x}/{y}",
-                {"attribution": "\u0026copy; \u003ca href=\"https://earthengine.google.com/\"\u003eGoogle Earth Engine\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            )
-
-            var layers = {
-                base_layers : {
-                    "Swisstopo" : swiss_topo_tiles,
-                },
-                overlays :  {
-                  "Satellite 2022-05-14" : s2_tiles_latest,
-                  "Satellite 2022-05-13" : s2_tiles_second,
-                  "Potential snow 2022-05-14" : snow_cover_latest,
-                  "Potential snow 2022-05-13" : snow_cover_second,
-                },
-            };
-            L.control.layers(
-                layers.base_layers,
-                layers.overlays,
-                {"autoZIndex": true, "collapsed": true, "position": "topright"}
-            ).addTo(map);
-
-            L.control.sideBySide([s2_tiles_latest, s2_tiles_second], [snow_cover_latest, snow_cover_second]).addTo(map);
-
-</script>
+    var map = L.map(
+        "map",
+        {
+            center: [46.6, 8.6],
+            crs: L.CRS.EPSG3857,
+            zoom: 11,
+            zoomControl: true,
+            preferCanvas: false,
+        }
+    );
+    </script> -->
+    <script src = "map.js"></script>
