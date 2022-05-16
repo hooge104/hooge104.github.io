@@ -9,7 +9,8 @@ ee.Initialize()
 
 # Map
 map = folium.Map(location = [46.75, 8.5],
-                 zoom_start = 8, tiles = None)
+                 zoom_start = 10,
+                 tiles = None)
 
 # Swisstopo layer
 folium.TileLayer(tiles = 'https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/{z}/{x}/{y}.jpeg',
@@ -19,20 +20,36 @@ folium.TileLayer(tiles = 'https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.pixelkart
                  control = True).add_to(map)
 
 # Function to add ee.Image() to map
-def add_ee_layer(self, ee_image_object, vis_params, name):
+def add_ee_layer_showT(self, ee_image_object, vis_params, name):
   map_id_dict = ee.Image(ee_image_object).getMapId(vis_params)
   folium.raster_layers.TileLayer(
       tiles = map_id_dict['tile_fetcher'].url_format,
       attr = '&copy; <a href="https://earthengine.google.com/">Google Earth Engine</a>',
       name = name,
       overlay = True,
-      control = True
+      control = True,
+      show = True
   ).add_to(self)
 
-folium.Map.add_ee_layer = add_ee_layer
+folium.Map.add_ee_layer_showT = add_ee_layer_showT
 
-start = ee.Date('2022-04-14')
+# Function to add ee.Image() to map
+def add_ee_layer_showF(self, ee_image_object, vis_params, name):
+  map_id_dict = ee.Image(ee_image_object).getMapId(vis_params)
+  folium.raster_layers.TileLayer(
+      tiles = map_id_dict['tile_fetcher'].url_format,
+      attr = '&copy; <a href="https://earthengine.google.com/">Google Earth Engine</a>',
+      name = name,
+      overlay = True,
+      control = True,
+      show = False
+  ).add_to(self)
+
+folium.Map.add_ee_layer_showF = add_ee_layer_showF
+
+# Dates for imagery: past month
 end = ee.Date(time.time()*1000)
+start = end.advance(-1, 'month')
 
  # Function to mask clouds using the Sentinel-2 QA band
 def maskS2clouds(image):
@@ -126,15 +143,15 @@ rgbVis = {
 vis_params_snow = {'palette': ['#FF0000'], 'opacity': 0.3}
 
 # Add the image layer to the map and display it.
-map.add_ee_layer(latestImage, rgbVis, 'Satellite '+latestImage.get('system:date').getInfo())
-map.add_ee_layer(secondImage, rgbVis, 'Satellite '+secondImage.get('system:date').getInfo())
-map.add_ee_layer(thirdImage, rgbVis, 'Satellite '+thirdImage.get('system:date').getInfo())
-map.add_ee_layer(constantImgLatest, vis_params_snow, 'Snow cover '+latestImage.get('system:date').getInfo())
-map.add_ee_layer(constantImgSecond, vis_params_snow, 'Snow cover '+secondImage.get('system:date').getInfo())
-map.add_ee_layer(constantImgThird, vis_params_snow, 'Snow cover '+thirdImage.get('system:date').getInfo())
+map.add_ee_layer_showT(latestImage, rgbVis, 'Satellite '+latestImage.get('system:date').getInfo())
+map.add_ee_layer_showF(secondImage, rgbVis, 'Satellite '+secondImage.get('system:date').getInfo())
+map.add_ee_layer_showF(thirdImage, rgbVis, 'Satellite '+thirdImage.get('system:date').getInfo())
+map.add_ee_layer_showT(constantImgLatest, vis_params_snow, 'Snow cover '+latestImage.get('system:date').getInfo())
+map.add_ee_layer_showF(constantImgSecond, vis_params_snow, 'Snow cover '+secondImage.get('system:date').getInfo())
+map.add_ee_layer_showF(constantImgThird, vis_params_snow, 'Snow cover '+thirdImage.get('system:date').getInfo())
 
 # Add layer control
-folium.map.LayerControl(collapsed=False).add_to(map)
+folium.map.LayerControl(collapsed=True).add_to(map)
 
 # Hard-code map._id to make it referenceable
 map._id = "1"
@@ -150,16 +167,16 @@ with open('map_gee_blurbs.html') as fp:
 data = soup.find_all("script")[5]
 
 # Get references for tiles
-tile_refs = data.string.split('var ')[-1].split('{')[3].split('\n')[1:6]
+tile_refs = data.string.split('var ')[-1].split('{')[3].split('\n')[1:7]
 tile_refs = [string.replace('                    ', '').replace('"','').replace(',','').split(' : ') for string in tile_refs]
 df = pd.DataFrame(tile_refs, columns = ['tile', 'ref'])
 
-s2_tiles = list(df[df['tile'].str.startswith('Sentinel')]['ref'])
+s2_tiles = list(df[df['tile'].str.startswith('Satellite')]['ref'])
 snow_tiles = list(df[df['tile'].str.startswith('Snow')]['ref'])
 
 map_ref = data.string.split('var ')[1].split(' = ')[0]
 
-control_string = 'L.control.sideBySide(' + str(s2_tiles) + ',' + str(s2_tiles) + ').addTo('+ str(map_ref) +');'
+control_string = 'L.control.sideBySide(' + str(s2_tiles) + ',' + str(snow_tiles) + ').addTo('+ str(map_ref) +');'
 control_string = control_string.replace("'", "")
 
 # Convert to string and remove script tags
