@@ -90,22 +90,22 @@
             ).addTo(map);
 
             var s2_tiles_latest = L.tileLayer(
-              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/d84e8d9a353056f43acdff7a8363e412-f8d0b4e3f29cc1c24b2459306c8ac886/tiles/{z}/{x}/{y}",
+              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/39630168c056ed454626d215e0c44dcf-cbf088ee7e57fa9a6f2e83dba73497b0/tiles/{z}/{x}/{y}",
                 {"attribution": "\u0026copy; \u003ca href=\"https://earthengine.google.com/\"\u003eGoogle Earth Engine\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             ).addTo(map);
 
             var snow_cover_latest = L.tileLayer(
-              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/716986381775404aa6ef7e615c354d02-0f3ab78a7d8cf8516e8fb3cfd711b912/tiles/{z}/{x}/{y}",
+              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/4c0e942996fcb69e47d6fc4a927b5b18-1b3b7a7bb8a574e6fd0f5cdbb53da6de/tiles/{z}/{x}/{y}",
                 {"attribution": "\u0026copy; \u003ca href=\"https://earthengine.google.com/\"\u003eGoogle Earth Engine\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             ).addTo(map);
 
             var s2_tiles_second = L.tileLayer(
-              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/523b0d1efe0eeff95838c6993e53d791-f4186adc41ecace2367207ebf47cf557/tiles/{z}/{x}/{y}",
+              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/ac2b5deb79998c47baeab5eecba43f6a-81ab2fcc54721dacb24f9b81a54e1f3a/tiles/{z}/{x}/{y}",
                 {"attribution": "\u0026copy; \u003ca href=\"https://earthengine.google.com/\"\u003eGoogle Earth Engine\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             )
 
             var snow_cover_second = L.tileLayer(
-              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/0ac65977fb14fb072df7e1cbc2947c90-df1f634b74dfe42e8fe70fcede5dfd4c/tiles/{z}/{x}/{y}",
+              "https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/cb3fe5bb887f411f3551a8373a4513c6-143e281d90057f75398a682feb94864c/tiles/{z}/{x}/{y}",
                 {"attribution": "\u0026copy; \u003ca href=\"https://earthengine.google.com/\"\u003eGoogle Earth Engine\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             )
 
@@ -114,10 +114,10 @@
                     "Swisstopo" : swiss_topo_tiles,
                 },
                 overlays :  {
-                  "Satellite 2022-05-11" : s2_tiles_latest,
-                  "Satellite 2022-05-09" : s2_tiles_second,
-                  "Potential snow 2022-05-11" : snow_cover_latest,
-                  "Potential snow 2022-05-09" : snow_cover_second,
+                  "Satellite 2022-05-14" : s2_tiles_latest,
+                  "Satellite 2022-05-13" : s2_tiles_second,
+                  "Potential snow 2022-05-14" : snow_cover_latest,
+                  "Potential snow 2022-05-13" : snow_cover_second,
                 },
             };
             L.control.layers(
