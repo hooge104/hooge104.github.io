@@ -129,10 +129,12 @@ listOfImages = s2day.toList(s2day.size()).reverse()
 latestImage = ee.Image(listOfImages.get(0))
 secondImage = ee.Image(listOfImages.get(1))
 thirdImage = ee.Image(listOfImages.get(2))
+fourthImage = ee.Image(listOfImages.get(3))
 
 constantImgLatest = (latestImage.updateMask(latestImage.gt(0.27))).divide(latestImage.updateMask(latestImage.gt(0.27))).select(1)
 constantImgSecond = (secondImage.updateMask(secondImage.gt(0.27))).divide(secondImage.updateMask(secondImage.gt(0.27))).select(1)
 constantImgThird = (thirdImage.updateMask(thirdImage.gt(0.27))).divide(thirdImage.updateMask(thirdImage.gt(0.27))).select(1)
+constantImgFourth = (fourthImage.updateMask(fourthImage.gt(0.27))).divide(fourthImage.updateMask(fourthImage.gt(0.27))).select(1)
 
 # Visualisation parameters
 rgbVis = {
@@ -147,14 +149,17 @@ vis_params_snow = {'palette': ['#FF0000'], 'opacity': 0.3}
 latestDate=latestImage.get('system:date').getInfo()
 secondDate=secondImage.get('system:date').getInfo()
 thirdDate=thirdImage.get('system:date').getInfo()
+fourthDate=fourthImage.get('system:date').getInfo()
 
 # Add the image layer to the map and display it.
 map.add_ee_layer_showT(latestImage, rgbVis, 'Satellite '+latestDate)
 map.add_ee_layer_showF(secondImage, rgbVis, 'Satellite '+secondDate)
 map.add_ee_layer_showF(thirdImage, rgbVis, 'Satellite '+thirdDate)
+map.add_ee_layer_showF(fourthImage, rgbVis, 'Satellite '+fourthDate)
 map.add_ee_layer_showT(constantImgLatest, vis_params_snow, 'Snow cover '+latestDate)
 map.add_ee_layer_showF(constantImgSecond, vis_params_snow, 'Snow cover '+secondDate)
 map.add_ee_layer_showF(constantImgThird, vis_params_snow, 'Snow cover '+thirdDate)
+map.add_ee_layer_showF(constantImgFourth, vis_params_snow, 'Snow cover '+fourthDate)
 
 # Add layer control
 folium.map.LayerControl(collapsed=True).add_to(map)
