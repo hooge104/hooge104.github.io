@@ -5,7 +5,10 @@ import ee
 import time
 from bs4 import BeautifulSoup
 
-ee.Initialize()
+# ee.Initialize()
+service_account = 'johan-945@gem-eth-analysis.iam.gserviceaccount.com'
+credentials = ee.ServiceAccountCredentials(service_account, '/Users/johanvandenhoogen/ETH/Projects/google_cloud/gem-eth-analysis-ed2f1746520f.json')
+ee.Initialize(credentials)
 
 # Map
 map = folium.Map(location = [46.75, 8.5],
