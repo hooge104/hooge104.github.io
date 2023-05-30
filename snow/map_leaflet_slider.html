@@ -32,6 +32,7 @@
                     height:93.0%;
                     left: 1.0%;
                     top: 2.0%;
+                    z-index: 1;
                 }
             </style>
             <style>
@@ -44,6 +45,45 @@
                     top: 93.0%;
                 }
             </style>
+            <style>
+                        /* The Modal (background) */
+        .modal {
+            display: block; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 100; /* Sit on top */
+            left: 25%;
+            top: 25%;
+            width: 50%;
+            height: 50%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+            </style>
 
 
     <script src="leaflet-side-by-side.js"></script>
@@ -54,34 +94,47 @@
 
             <div class="folium-map" id="map_1" ></div>
 
-            <div class="text" id="text" >
-              <p style="text-align:justify"><strong>General info</strong></p>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
 
-              <p style="text-align:justify"><strong>Snow cover &#39;detection&#39;</strong></p>
-
-              <p style="text-align:justify">This tool is aimed at trail runners and/or mountain bikers who want to go somewhere relatively high up in the mountains early in the seasons. This is a very simple tool showing satellite data and potential snow cover side-to side, which can help in route planning. On the left, the latest Sentinel 2 RGB (visible light) data are displayed, on the pixels with potential snow cover are highlighted in red. Nothing fancy is done; simply all pixels with a signal above a fairly arbitrary threshold are considered to be &#39;snow covered&#39;. A way better solution is built by <a href="https://www.exolabs.ch/" target="_blank">Exolabs</a>, who&#39;s snow cover layers are built using observational data and models, and supply snow depth too. Yet, for whoever wants to know whether there&#39;s&nbsp;<em>any</em>&nbsp;snow left on the planned route, this janky thing might come in useful :)</p>
-
-              <p style="text-align:justify"><strong>No satellite imagery is available for my region of interest!</strong></p>
-
-              <p style="text-align:justify">Most likely this means that you need to select another satellite signal: you can do this under the drop-down menu on the top-right. If you&#39;re unlucky and there were clouds on the moment the imagery was collected, clouds or blank pixels will be displayed.&nbsp;</p>
-
-              <p style="text-align:justify"><strong>Disclaimer / small print</strong></p>
-
-              <p style="text-align:justify">Please note that this is not a real snow detection tool - it simply highlights pixels above an arbitrary threshold. Hence, clouds, buildings or other bright pixels can be detected as snow; and snow covered by debris go undetected. Actual snow cover might differ significantly from what is predicted, and the data might be faulty or outdated. So, be careful and take none of these results for granted. Always use common sense, don&#39;t take any of these predictions as sole tour planning tool.</p>
-
-              <p style="text-align:justify">I cannot take any responsibility nor can I be held liable for any information displayed on this page.&nbsp;Any reliance you place on the displayed information is therefore strictly at your own risk.</p>
-
-              <p style="text-align:right"><u>Copyright (c) Johan van den Hoogen 2022 - released under MIT License; <a href= "https://github.com/hooge104/hooge104.github.io/tree/master/snow">code is here</a></u></p>
-    <!-- <script>
-    var map = L.map(
-        "map",
-        {
-            center: [46.6, 8.6],
-            crs: L.CRS.EPSG3857,
-            zoom: 11,
-            zoomControl: true,
-            preferCanvas: false,
-        }
-    );
-    </script> -->
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p><strong>Disclaimer</strong></p>
+            <p>This tool could be useful for those who want to go somewhere relatively high up in the mountains early in the seasons. On the left, the latest available sattelite data (Sentinel 2) are displayed, on the right pixels with potential snow cover are highlighted in red. Nothing fancy is done; simply all pixels with a signal above a fairly arbitrary threshold are classified as potential snow.&nbsp;</p>
+            <p>Please note that this is not a real snow detection tool. Actual snow cover might differ significantly from what is predicted, and the data might be faulty or outdated. Be careful and take none of these results for granted.&nbsp;</p>
+            <p>I cannot take any responsibility nor can I be held liable for any information displayed on this page.&nbsp;Any reliance you place on the displayed information is therefore strictly at your own risk.</p>
+            <p><strong>No imagery available?</strong></p>
+            <p>If no sattelite imagery is available for your region of interest, try selecting a different date under the drop-down menu on the top-right. If you're unlucky and there were clouds on the moment the imagery was collected, clouds or blank pixels will be displayed.&nbsp;</p>
+            <p><u>Copyright (c) Johan van den Hoogen 2023 - released under MIT License; <a href="https://github.com/hooge104/hooge104.github.io/tree/master/snow">code is here</a></u></p>
+        </div>
     <script src = "https://storage.googleapis.com/johan_public/map.js"></script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("map_1");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+    </script>
+    </body>
+    </html>
