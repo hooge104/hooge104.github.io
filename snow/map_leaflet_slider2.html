@@ -32,7 +32,7 @@
                     height:93.0%;
                     left: 1.0%;
                     top: 2.0%;
-                    z-index: 1;
+                    z-index: 1; 
                 }
             </style>
             <style>
@@ -48,7 +48,7 @@
             <style>
                         /* The Modal (background) */
         .modal {
-            display: block; /* Hidden by default */
+            display: block; /* Shown by default */
             position: fixed; /* Stay in place */
             z-index: 100; /* Sit on top */
             left: 25%;
@@ -94,8 +94,21 @@
 
             <div class="folium-map" id="map_1" ></div>
 
-        <script src = "map.js"></script>
-        <!-- <script src = "https://storage.googleapis.com/johan_public/map.js"></script> -->
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p><strong>Disclaimer</strong></p>
+            <p>This tool could be useful for those who want to go somewhere relatively high up in the mountains early in the seasons. On the left, the latest available sattelite data (Sentinel 2) are displayed, on the right pixels with potential snow cover are highlighted in red. Nothing fancy is done; simply all pixels with a signal above a fairly arbitrary threshold are classified as potential snow.&nbsp;</p>
+            <p>Please note that this is not a real snow detection tool. Actual snow cover might differ significantly from what is predicted, and the data might be faulty or outdated. Be careful and take none of these results for granted.&nbsp;</p>
+            <p>I cannot take any responsibility nor can I be held liable for any information displayed on this page.&nbsp;Any reliance you place on the displayed information is therefore strictly at your own risk.</p>
+            <p><strong>No imagery available?</strong></p>
+            <p>If no sattelite imagery is available for your region of interest, try selecting a different date under the drop-down menu on the top-right. If you're unlucky and there were clouds on the moment the imagery was collected, clouds or blank pixels will be displayed.&nbsp;</p>
+            <p><u>Copyright (c) Johan van den Hoogen 2023 - released under MIT License; <a href="https://github.com/hooge104/hooge104.github.io/tree/master/snow">code is here</a></u></p>
+        </div>
+    <script src = "https://storage.googleapis.com/johan_public/map.js"></script>
     <script>
         // Get the modal
         var modal = document.getElementById("myModal");
