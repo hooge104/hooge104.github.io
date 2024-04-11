@@ -7,8 +7,19 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <style>
-        #map { width: 80%; height: 400px; margin: 20px auto; }
-        .button-container { text-align: center; margin-top: 10px; margin-bottom: 10px; }
+        #map { 
+            width: 80%; 
+            height: 400px; 
+            margin: 20px auto; 
+        }
+        .button-container { 
+            text-align: center; 
+            margin-top: 10px; 
+            margin-bottom: 10px; 
+            display: flex; /* Ensure flex display for alignment adjustments */
+            justify-content: center; /* Center buttons within the container */
+            flex-wrap: wrap; /* Allow button wrapping on smaller screens */
+        }
         .filter-button { 
             background-color: steelblue; 
             border: none; 
@@ -18,8 +29,17 @@
             border-radius: 5px; 
             cursor: pointer; 
         }
-        .tile-container { display: flex; justify-content: space-between; padding: 20px; }
-        .type-column { width: 22%; display: flex; flex-direction: column; }
+        .tile-container { 
+            display: flex; 
+            justify-content: space-between; 
+            padding: 20px; 
+            flex-wrap: wrap; /* Allow tiles to wrap */
+        }
+        .type-column { 
+            width: 22%; 
+            display: flex; 
+            flex-direction: column; 
+        }
         .tile { 
             margin: 10px 0; 
             padding: 20px; 
@@ -33,11 +53,42 @@
         .Natural_Regeneration { background-color: rgba(68, 119, 170, 0.3); }
         .Plantation { background-color: rgba(238, 102, 119, 0.3); }
         .Pasture { background-color: rgba(204, 187, 68, 0.3); }
-        audio { width: 100%; margin-top: 15px; }
+        audio { 
+            width: 100%; 
+            margin-top: 15px; 
+        }
         body {
-                font-family: 'Roboto', sans-serif;
+            font-family: 'Roboto', sans-serif;
+        }
+        @media (max-width: 600px) {
+            .button-container {
+                flex-direction: column;
             }
+            .filter-button {
+                padding: 15px;
+                margin: 5px;
+                font-size: 16px; /* Larger text for easier reading */
+            }
+            #map {
+                width: 90%;
+                height: 300px; /* Adjust size for smaller screens */
+                margin: 10px auto;
+            }
+            .tile-container {
+                justify-content: center; /* Adjust justification for mobile */
+            }
+            .type-column {
+                width: 100%; /* Allow full width on smaller screens */
+                display: block; /* Correct display type for mobile */
+                margin-bottom: 20px; /* Ensure spacing between columns */
+            }
+            .tile {
+                width: 100%; /* Ensure tiles fill their container */
+                margin-bottom: 20px; /* Increase space between tiles */
+            }
+        }
     </style>
+    
 </head>
 <body>
     
