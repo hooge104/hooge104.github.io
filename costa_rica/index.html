@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Costa Rica Bioacoustics</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <style>
+        #map { width: 80%; height: 400px; margin: 20px auto; }
+        .button-container { text-align: center; margin-top: 10px; margin-bottom: 10px; }
+        .filter-button { 
+            background-color: steelblue; 
+            border: none; 
+            color: white; 
+            padding: 10px; 
+            margin: 4px; 
+            border-radius: 5px; 
+            cursor: pointer; 
+        }
+        .tile-container { display: flex; justify-content: space-between; padding: 20px; }
+        .type-column { width: 22%; display: flex; flex-direction: column; }
+        .tile { 
+            margin: 10px 0; 
+            padding: 20px; 
+            border: 1px solid #ccc; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+            border-radius: 10px; 
+            background-color: #f9f9f9;
+            text-align: center; 
+        }
+        .Reference_Forest { background-color: rgba(34, 136, 51, 0.3); }
+        .Natural_Regeneration { background-color: rgba(68, 119, 170, 0.3); }
+        .Plantation { background-color: rgba(238, 102, 119, 0.3); }
+        .Pasture { background-color: rgba(204, 187, 68, 0.3); }
+        audio { width: 100%; margin-top: 15px; }
+        body {
+                font-family: 'Roboto', sans-serif;
+            }
+    </style>
+</head>
+<body>
+    
+
+<div id="map"></div>
+
+<div class="button-container">
+    <!-- <button class="filter-button" style="background-color: #737373;" onclick="filterSites('all')">All Sites</button> -->
+    <button class="filter-button" style="background-color: #228833;" onclick="filterSites('Reference_Forest')">Reference Forests</button>
+    <button class="filter-button" style="background-color: #4477AA;" onclick="filterSites('Natural_Regeneration')">Natural Regeneration</button>
+    <button class="filter-button" style="background-color: #EE6677;" onclick="filterSites('Plantation')">Plantation</button>
+    <button class="filter-button" style="background-color: #CCBB44;" onclick="filterSites('Pasture')">Pasture</button>
+    <button class="filter-button" style="background-color: #737373" onclick="filterByAudio()">Only With Audio</button>
+
+</div>  
+
+<div class="tile-container">
+    <div class="type-column" id="Reference_Forest"></div>
+    <div class="type-column" id="Natural_Regeneration"></div>
+    <div class="type-column" id="Plantation"></div>
+    <div class="type-column" id="Pasture"></div>
+</div>
+
+<script>
+    var map = L.map('map').setView([10.0, -85.0], 8);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    var sites = []; // This will be populated from CSV
+    var markers = L.layerGroup().addTo(map);
+    var siteTypes = {
+        "Reference_Forest": "rgba(34, 136, 51, 0.8)",
+        "Natural_Regeneration": "rgba(68, 119, 170, 0.8)",
+        "Plantation": "rgba(238, 102, 119, 0.8)",
+        "Pasture": "rgba(204, 187, 68, 0.8)"
+    };
+
+    var sitesWithAudio = [
+        "RefForest5", "RefForest3", "PSA0373-2011", "PSA0429-2012", "RefForest1", 
+        "PSA0095-2013", "PSA0099-2019", "PSA0132-2013", "PSA0152-2013", "PSA0168-2016", 
+        "PSA0183-2017", "PSA0280-2012", "PSA0292-2012", "PSA0004-2017", "PSA0009-2018", 
+        "PSA0010-2010", "PSA0022-2015", "PSA0093-2018", "Pasture10", "Pasture11", 
+        "Pasture5", "Pasture9"
+    ];
+
+    var filterStates = {
+        removeFilters: false,
+        Reference_Forest: true,
+        Natural_Regeneration: true,
+        Plantation: true,
+        Pasture: true,
+        withAudio: false
+    };
+
+    function createTile(site) {
+        var containerId = site.Type;
+        var audioSrc = 'https://storage.googleapis.com/johan_public/mp3_audio/' + encodeURIComponent(site.Site) + '.mp3';
+        var tile = document.createElement('div');
+        tile.className = 'tile ' + site.Type; // Ensures the correct class is applied
+        tile.innerHTML = `
+            <h4>${site.Site}</h4>
+            <p>Type: ${site.Type.replace(/_/g, ' ')}</p>
+            <audio controls>
+                <source src="${audioSrc}" type="audio/mpeg">Your browser does not support the audio element.
+            </audio>
+        `;
+        document.getElementById(containerId).appendChild(tile);
+    }
+    
+    function filterSites(type) {
+        // Toggle the state of the selected filter
+        filterStates[type] = !filterStates[type];
+
+        // If 'all' is toggled, reset all other filters
+        if (type === 'all') {
+            Object.keys(filterStates).forEach(key => {
+                if (key !== 'all') filterStates[key] = false;
+            });
+        } else {
+            // If any specific filter is toggled, ensure 'all' is not active
+            filterStates.all = false;
+        }
+
+        applyFilters();
+    }
+
+    function filterByAudio() {
+        // Toggle the audio filter state
+        filterStates.withAudio = !filterStates.withAudio;
+
+        // Ensure 'all' is not active if audio filter is toggled
+        // filterStates.all = false;
+        filterStates.Reference_Forest = true;
+        filterStates.Natural_Regeneration = true;
+        filterStates.Plantation = true;
+        filterStates.Pasture = true;
+
+        applyFilters();
+        
+    }
+
+    function removeFilters() {
+        Object.keys(filterStates).forEach(key => filterStates[key] = false); // Deactivate all filters
+        filterStates.all = true;  // Reactivate 'all sites'
+        applyFilters();
+        updateButtonAppearances();
+    }
+
+    function updateButtonAppearances() {
+        document.querySelectorAll('.filter-button').forEach(button => {
+            const filter = button.getAttribute('onclick').match(/'([^']+)'/)[1];  // Extract the filter name from the onclick attribute
+            if (filterStates[filter]) {
+                button.style.opacity = '1.0';  // Full opacity when active
+                button.style.boxShadow = '0 2px 4px rgba(0,0,0,0.3)';  // Optional: Add a shadow for active buttons
+            } else {
+                button.style.opacity = '0.6';  // Reduced opacity when inactive
+                button.style.boxShadow = 'none';  // Remove shadow when inactive
+            }
+        });
+    }
+
+    // function applyFilters() {
+    //     document.getElementById("Reference_Forest").innerHTML = '';
+    //     document.getElementById("Natural_Regeneration").innerHTML = '';
+    //     document.getElementById("Plantation").innerHTML = '';
+    //     document.getElementById("Pasture").innerHTML = '';
+    //     markers.clearLayers();
+
+    //     var activeTypeFilters = Object.keys(filterStates).filter(key => filterStates[key] && key !== 'withAudio' && key !== 'removeFilters');
+    //     var audioFilterActive = filterStates.withAudio;
+    //     var showAll = filterStates.removeFilters || (activeTypeFilters.length === 0 && !audioFilterActive);
+
+    //     var filteredSites = sites.filter(site => {
+    //         if (showAll) return true;
+    //         let typeMatch = activeTypeFilters.length ? activeTypeFilters.some(filter => site.Type.replace(/\s+/g, '_') === filter) : true;
+    //         let audioMatch = audioFilterActive ? sitesWithAudio.includes(site.Site) : true;
+    //         return typeMatch && audioMatch;
+    //     });
+
+    //     filteredSites.forEach(site => displaySite(site));
+    //     updateButtonAppearances();
+    // }
+
+    function applyFilters() {
+        document.getElementById("Reference_Forest").innerHTML = '';
+        document.getElementById("Natural_Regeneration").innerHTML = '';
+        document.getElementById("Plantation").innerHTML = '';
+        document.getElementById("Pasture").innerHTML = '';
+        markers.clearLayers();
+
+        var activeTypeFilters = Object.keys(filterStates).filter(key => filterStates[key] && key !== 'withAudio' && key !== 'removeFilters');
+        var audioFilterActive = filterStates.withAudio;
+        var showAll = filterStates.removeFilters || activeTypeFilters.length === 0;
+
+        var filteredSites = sites.filter(site => {
+            if (showAll) return true;
+            let typeMatch = activeTypeFilters.length ? activeTypeFilters.some(filter => site.Type.replace(/\s+/g, '_') === filter) : true;
+            let audioMatch = audioFilterActive ? sitesWithAudio.includes(site.Site) : true;
+            return typeMatch && audioMatch;
+        });
+
+        filteredSites.forEach(site => displaySite(site));
+        updateButtonAppearances();
+    }
+
+
+
+    function displaySite(site) {
+        var audioSrc = 'https://storage.googleapis.com/johan_public/mp3_audio/' + encodeURIComponent(site.Site) + '.mp3';
+        var marker = L.circleMarker([site.latitude, site.longitude], {
+            color: siteTypes[site.Type.replace(/\s+/g, '_')],
+            fillColor: siteTypes[site.Type.replace(/\s+/g, '_')],
+            fillOpacity: 0.5,
+            radius: 8
+        }).bindPopup(`<b>${site.Site}</b><br>Type: ${site.Type}<br><audio controls><source src="${audioSrc}" type="audio/mpeg">Your browser does not support the audio element.</audio>`, { minWidth: 150 });
+        markers.addLayer(marker);
+        createTile(site);
+    }
+
+    function loadSiteData(url) {
+        Papa.parse(url, {
+            download: true,
+            header: true,
+            skipEmptyLines: true,
+            complete: function(results) {
+                sites = results.data;
+                applyFilters();  // Apply the default filter settings to display all sites
+            },
+            error: function(error) {
+                console.log("Error loading CSV:", error);
+            }
+        });
+    }
+
+
+    loadSiteData('https://raw.githubusercontent.com/hooge104/hooge104.github.io/master/site_locations.csv');
+</script>
+
+</body>
+</html>

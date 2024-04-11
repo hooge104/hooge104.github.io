@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academic Research Overview</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .tile {
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 15px;
+    width: calc(50% - 20px);
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  .tile:hover {
+    transform: translateY(-5px);
+  }
+  .tile img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+  .title, .authors, .abstract, .journal, .publication-date {
+    margin-bottom: 10px;
+  }
+  .add-paper {
+    cursor: pointer;
+    margin: 10px;
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+  }
+  .add-paper:hover {
+    background-color: #0056b3;
+  }
+  .tags {
+    margin-top: 10px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 5px;
+    margin-right: 5px;
+    background-color: #e9e9e9;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="add-paper">[+] Add Paper</div>
+
+<div class="container" id="papers-container">
+  <!-- Tiles will be appended here -->
+</div>
+
+<script>
+// Placeholder function for fetching data from URLs
+function fetchDataFromURL(url) {
+  // Here you would have the actual logic to fetch the data from the URLs
+  // For demonstration purposes, we're using hardcoded data
+  const exampleData = {
+    'https://www.nature.com/articles/s41586-019-1418-6': {
+      img: 'thumbnail1.jpg',
+      title: 'Example Paper from Nature',
+      authors: ['Author One', 'Author Two'],
+      abstract: 'This is a short abstract of a paper from Nature.',
+      journal: 'Nature',
+      publicationDate: '2019-07-24',
+      doi: 'https://doi.org/10.1038/s41586-019-1418-6',
+      tags: ['Biology', 'Genetics']
+    },
+    'https://www.science.org/doi/10.1126/science.aax0848': {
+      img: 'thumbnail2.jpg',
+      title: 'Example Paper from Science',
+      authors: ['Author Three', 'Author Four'],
+      abstract: 'This is a short abstract of a paper from Science.',
+      journal: 'Science',
+      publicationDate: '2019-08-15',
+      doi: 'https://doi.org/10.1126/science.aax0848',
+      tags: ['Physics', 'Astrophysics']
+    }
+  };
+  return exampleData[url];
+}
+
+// Add the paper tile to the container
+function addTile(paper) {
+  const container = document.getElementById('papers-container');
+  const authors = paper.authors.join(', ');
+  const tags = paper.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+
+  const tile = `
+    <div class="tile">
+      <img src="${paper.img}" alt="Preview">
+      <div class="title">${paper.title}</div>
+      <div class="authors">${authors}</div>
+      <div class="abstract">${paper.abstract}</div>
+      <div class="journal">Journal: ${paper.journal}</div>
+      <div class="publication-date">Published on: ${paper.publicationDate}</div>
+      <a href="${paper.doi}" target="_blank">DOI</a>
+      <div class="tags">${tags}</div>
+    </div>
+  `;
+
+  container.innerHTML += tile;
+}
+
+// Event listener for the Add Paper button
+document.querySelector('.add-paper').addEventListener('click', () => {
+  // This is where you would add the logic to input a URL and fetch data
+  // For demonstration, we'll use a predefined URL
+  const paperData = fetchDataFromURL('https://www.nature.com/articles/s41586-019-1418-6');
+  addTile(paperData);
+});
+
+</script>
+
+</body>
+</html>
