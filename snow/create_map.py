@@ -186,10 +186,10 @@ map.add_ee_layer_showT(latestImage, rgbVis, 'Satellite '+latestDate)
 map.add_ee_layer_showF(secondImage, rgbVis, 'Satellite '+secondDate)
 map.add_ee_layer_showF(thirdImage, rgbVis, 'Satellite '+thirdDate)
 map.add_ee_layer_showF(fourthImage, rgbVis, 'Satellite '+fourthDate)
-map.add_ee_layer_showT(constantImgLatest, vis_params_snow, 'Snow cover '+latestDate)
-map.add_ee_layer_showF(constantImgSecond, vis_params_snow, 'Snow cover '+secondDate)
-map.add_ee_layer_showF(constantImgThird, vis_params_snow, 'Snow cover '+thirdDate)
-map.add_ee_layer_showF(constantImgFourth, vis_params_snow, 'Snow cover '+fourthDate)
+# map.add_ee_layer_showT(constantImgLatest, vis_params_snow, 'Snow cover '+latestDate)
+# map.add_ee_layer_showF(constantImgSecond, vis_params_snow, 'Snow cover '+secondDate)
+# map.add_ee_layer_showF(constantImgThird, vis_params_snow, 'Snow cover '+thirdDate)
+# map.add_ee_layer_showF(constantImgFourth, vis_params_snow, 'Snow cover '+fourthDate)
 
 # Add layer control
 folium.map.LayerControl(collapsed=True).add_to(map)
@@ -227,5 +227,5 @@ data = data.string.replace('<script>', '').replace('</script>', '')
 # Write to js file
 stringToWrite = data + control_string
 
-with open('map.js', 'w') as f:
+with open('map_alldata.js', 'w') as f:
     f.write(stringToWrite)
