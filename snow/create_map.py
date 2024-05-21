@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 # ee.Initialize()
 service_account = 'johan-945@gem-eth-analysis.iam.gserviceaccount.com'
-credentials = ee.ServiceAccountCredentials(service_account, '/Users/johanvandenhoogen/ETH/Projects/google_cloud/gem-eth-analysis-ed2f1746520f.json')
+credentials = ee.ServiceAccountCredentials(service_account, '/Users/johanvandenhoogen/ETH/Projects/google_cloud/crowther-gee-serviceaccount/gem-eth-analysis-96ea9ecb2158.json')
 ee.Initialize(credentials)
 
 # Map
@@ -20,6 +20,12 @@ map = folium.Map(location = [46.75, 8.5],
 folium.TileLayer(tiles = 'https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/{z}/{x}/{y}.jpeg',
                  attr='&copy <a href=https://www.swisstopo.admin.ch/en/home.html">Federal Office of Topography swisstopo</a>',
                  name = 'Swisstopo',
+                 overlay = False,
+                 control = True).add_to(map)
+
+folium.TileLayer(tiles = 'https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.swisstlm3d-wanderwege/default/current/3857/{z}/{x}/{y}.png',
+                 attr='&copy <a href=https://www.swisstopo.admin.ch/en/home.html">Federal Office of Topography swisstopo</a>',
+                 name = 'Wanderwege',
                  overlay = False,
                  control = True).add_to(map)
 
@@ -55,25 +61,44 @@ folium.Map.add_ee_layer_showF = add_ee_layer_showF
 end = ee.Date(time.time()*1000)
 start = end.advance(-1, 'month')
 
- # Function to mask clouds using the Sentinel-2 QA band
-def maskS2clouds(image):
-    qa = image.select('QA60')
+#  # Function to mask clouds using the Sentinel-2 QA band
+# def maskS2clouds(image):
+#     qa = image.select('QA60')
 
-    # // Bits 10 and 11 are clouds and cirrus, respectively.
-    cloudBitMask = 1 << 10
-    cirrusBitMask = 1 << 11
+#     # // Bits 10 and 11 are clouds and cirrus, respectively.
+#     cloudBitMask = 1 << 10
+#     cirrusBitMask = 1 << 11
 
-    # Both flags should be set to zero, indicating clear conditions.
-    mask = qa.bitwiseAnd(cloudBitMask).eq(0).And(qa.bitwiseAnd(cirrusBitMask).eq(0))
+#     # Both flags should be set to zero, indicating clear conditions.
+#     mask = qa.bitwiseAnd(cloudBitMask).eq(0).And(qa.bitwiseAnd(cirrusBitMask).eq(0))
 
-    return image.updateMask(mask).divide(10000).copyProperties(image, image.propertyNames())
+#     return image.updateMask(mask).divide(10000).copyProperties(image, image.propertyNames())
 
 Switzerland_bounds = ee.FeatureCollection("FAO/GAUL_SIMPLIFIED_500m/2015/level0").filterMetadata('ADM0_NAME', 'equals', 'Switzerland')
 
-s2 = ee.ImageCollection('COPERNICUS/S2_SR')\
-                    .filterBounds(Switzerland_bounds)\
-                    .filter(ee.Filter.date(start, end))\
-                    .map(maskS2clouds)
+# s2 = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')\
+#                     .filterBounds(Switzerland_bounds)\
+#                     .filter(ee.Filter.date(start, end))\
+#                     .map(maskS2clouds)
+
+s2 = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
+
+# // Cloud Score+ image collection. Note Cloud Score+ is produced from Sentinel-2
+# // Level 1C data and can be applied to either L1C or L2A collections.
+csPlus = ee.ImageCollection('GOOGLE/CLOUD_SCORE_PLUS/V1/S2_HARMONIZED')
+
+# // Use 'cs' or 'cs_cdf', depending on your use-case; see docs for guidance.
+QA_BAND = 'cs_cdf'
+
+# // The threshold for masking; values between 0.50 and 0.65 generally work well.
+# // Higher values will remove thin clouds, haze & cirrus shadows.
+CLEAR_THRESHOLD = 0.60
+
+s2 = s2\
+    .filterBounds(Switzerland_bounds)\
+    .filter(ee.Filter.date(start, end))\
+    # .linkCollection(csPlus, [QA_BAND])\
+    # .map(lambda img: img.updateMask(img.select(QA_BAND).gte(CLEAR_THRESHOLD)))
 
 # Latest S2 image
 latestImage = s2.sort('system:index',False).first()
@@ -134,15 +159,17 @@ secondImage = ee.Image(listOfImages.get(1))
 thirdImage = ee.Image(listOfImages.get(2))
 fourthImage = ee.Image(listOfImages.get(3))
 
-constantImgLatest = (latestImage.updateMask(latestImage.gt(0.27))).divide(latestImage.updateMask(latestImage.gt(0.27))).select(1)
-constantImgSecond = (secondImage.updateMask(secondImage.gt(0.27))).divide(secondImage.updateMask(secondImage.gt(0.27))).select(1)
-constantImgThird = (thirdImage.updateMask(thirdImage.gt(0.27))).divide(thirdImage.updateMask(thirdImage.gt(0.27))).select(1)
-constantImgFourth = (fourthImage.updateMask(fourthImage.gt(0.27))).divide(fourthImage.updateMask(fourthImage.gt(0.27))).select(1)
+snow_threshold = 2700
+
+constantImgLatest = (latestImage.updateMask(latestImage.gt(snow_threshold))).divide(latestImage.updateMask(latestImage.gt(snow_threshold))).select(1)
+constantImgSecond = (secondImage.updateMask(secondImage.gt(snow_threshold))).divide(secondImage.updateMask(secondImage.gt(snow_threshold))).select(1)
+constantImgThird = (thirdImage.updateMask(thirdImage.gt(snow_threshold))).divide(thirdImage.updateMask(thirdImage.gt(snow_threshold))).select(1)
+constantImgFourth = (fourthImage.updateMask(fourthImage.gt(snow_threshold))).divide(fourthImage.updateMask(fourthImage.gt(snow_threshold))).select(1)
 
 # Visualisation parameters
 rgbVis = {
-  'min': 0.0,
-  'max': 0.3,
+  'min': 0,
+  'max': 2500,
   'bands': ['B4', 'B3', 'B2'],
 }
 
@@ -172,6 +199,7 @@ map._id = "1"
 
 # Write to html file
 map.save('./map_gee_blurbs.html')
+
 
 # Open html file
 with open('map_gee_blurbs.html') as fp:

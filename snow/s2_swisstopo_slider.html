@@ -57,21 +57,23 @@
             <div class="text" id="text" >
               <p style="text-align:justify"><strong>General info</strong></p>
 
-              <p style="text-align:justify"><strong>Snow cover &#39;detection&#39;</strong></p>
+              <p style="text-align:justify"><strong>Swiss Topo & recent Sentinel S2 imagery</strong></p>
 
-              <p style="text-align:justify">This tool is aimed at trail runners and/or mountain bikers who want to go somewhere relatively high up in the mountains early in the seasons. This is a very simple tool showing satellite data and potential snow cover side-to side, which can help in route planning. On the left, the latest Sentinel 2 RGB (visible light) data are displayed, on the pixels with potential snow cover are highlighted in red. Nothing fancy is done; simply all pixels with a signal above a fairly arbitrary threshold are considered to be &#39;snow covered&#39;. Yet, for whoever wants to know whether there&#39;s&nbsp;<em>any</em>&nbsp;snow left on the planned route, this janky thing might come in useful :)</p>
+              <p style="text-align:justify">This page could be useful when planning a trail run or hike early in the season, to check if there might still be some snow remaining on your planned route.</p>
 
-              <p style="text-align:justify"><strong>Why are there so many holes in the images?</strong></p>
+              <p style="text-align:justify"><strong>I only see clouds</strong></p>
 
-              <p style="text-align:justify">This is a result of cloud filtering. Some clouds might remain. Try selecting another satellite image: you can do this under the drop-down menu on the top-right.</p>
+              <p style="text-align:justify">Currently no cloud filtering is applied, in order to retain as many pixels as possible. Please be aware that clouds sometimes look</p>
               
               <p style="text-align:justify"><strong>Disclaimer / small print</strong></p>
 
-              <p style="text-align:justify">Please note that this is not a real snow detection tool - it simply highlights pixels above an arbitrary threshold. Clouds, buildings or other bright pixels can be 'detected' as snow; and snow covered by debris go undetected. Actual snow cover might differ significantly from what is predicted, and the data might be faulty or outdated. Be careful and take none of these results for granted. Always use common sense, don&#39;t take any of these predictions as sole tour planning tool.</p>
+              <p style="text-align:justify">Please note that this is not a real snow detection tool, it just displays the latest RGB imagery. 
+                Snow covered by debris, underneath tree canopy or close to rock faces might not be visibile. Clouds, buildings or other bright pixels can appear as snow.
+                Be careful and take none of these results for granted. </p>
 
               <p style="text-align:justify">I cannot take any responsibility nor can I be held liable for any information displayed on this page.&nbsp;Any reliance you place on the displayed information is therefore strictly at your own risk.</p>
 
-              <p style="text-align:right"><u>Copyright (c) Johan van den Hoogen 2024 - released under MIT License; <a href= "https://github.com/hooge104/hooge104.github.io/tree/master/snow">code is here</a></u></p>
+              <p style="text-align:right"><u>Copyright (c) Johan van den Hoogen 2024 - released under MIT License</u></p>
     <!-- <script>
     var map = L.map(
         "map",
@@ -85,4 +87,4 @@
     );
     </script> -->
     <!-- <script src = "https://storage.googleapis.com/johan_public/map.js"></script> -->
-    <script> scr = 'map.js'</script>
+    <script> src = '/Users/johanvandenhoogen/GitHub/hooge104.github.io/snow/map.js'</script>
