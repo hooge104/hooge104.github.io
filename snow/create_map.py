@@ -21,13 +21,13 @@ folium.TileLayer(tiles = 'https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.pixelkart
                  attr='&copy <a href=https://www.swisstopo.admin.ch/en/home.html">Federal Office of Topography swisstopo</a>',
                  name = 'Swisstopo',
                  overlay = False,
-                 control = True).add_to(map)
+                 control = False).add_to(map)
 
 folium.TileLayer(tiles = 'https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.swisstlm3d-wanderwege/default/current/3857/{z}/{x}/{y}.png',
                  attr='&copy <a href=https://www.swisstopo.admin.ch/en/home.html">Federal Office of Topography swisstopo</a>',
-                 name = 'Wanderwege',
-                 overlay = False,
-                 control = True).add_to(map)
+                 name = 'Hiking trails',
+                 overlay = True,
+                 control = False).add_to(map)
 
 # Function to add ee.Image() to map
 def add_ee_layer_showT(self, ee_image_object, vis_params, name):
