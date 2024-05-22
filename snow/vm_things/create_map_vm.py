@@ -14,7 +14,7 @@ ee.Initialize(credentials)
 
 # Map
 map = folium.Map(location = [46.75, 8.5],
-                 zoom_start = 10,
+                 zoom_start = 9,
                  tiles = None,
                  min_zoom = 8)
 
