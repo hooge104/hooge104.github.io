@@ -18,7 +18,6 @@ library(viridis)
 library(wesanderson)
 library(tidyverse)
 library(cartography)
-library(gameofthrones)
 
 heatmap$value <- scale(heatmap$value)
 
@@ -188,16 +187,6 @@ plot(Grey)
 ```
 
 # TV-inspired palettes
-## Game of Thrones: House Lanister
-```{r}
-Lanister <- got(9, option = "Targaryen")
-plot(Lanister)
-```
-
-```{js}
-["000000FF", "270001FF", "4E0002FF", "750003FF", "9D0005FF", "994953FF", "9593A2FF", "B6B5BCFF", "D8D8D8FF"]
-```
- 
 ## Wes Anderson: The Life Aquatic with Steve Zissou (2004)
 ```{r}
 zissou <- wes_palette("Zissou1")

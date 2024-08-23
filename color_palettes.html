@@ -11,29 +11,43 @@
 
 
 
-<title>color_palettes.utf8</title>
+<title>color_palettes.knit</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -46,32 +60,8 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
+
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 <link rel="stylesheet" href="site_libs/academicons-1.8.6/css/academicons.css" type="text/css" />
@@ -83,10 +73,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -103,40 +89,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 52px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 57px;
-  margin-top: -57px;
-}
-.section h2 {
-  padding-top: 57px;
-  margin-top: -57px;
-}
-.section h3 {
-  padding-top: 57px;
-  margin-top: -57px;
-}
-.section h4 {
-  padding-top: 57px;
-  margin-top: -57px;
-}
-.section h5 {
-  padding-top: 57px;
-  margin-top: -57px;
-}
-.section h6 {
-  padding-top: 57px;
-  margin-top: -57px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -164,7 +126,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -176,7 +138,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -186,11 +148,28 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.parent().addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -202,13 +181,12 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -216,16 +194,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -328,7 +299,7 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -342,7 +313,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -397,7 +368,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -407,15 +378,15 @@ div.tocify {
 
 <div id="color-palette-overview" class="section level1">
 <h1>Color palette overview</h1>
-<p>All code is ready to go for <code>R</code>. To use the color palettes for displaying purposes in <code>Javascript</code> (GEE) or <code>Python</code>, simply copy-paste the lists beneath the example images.</p>
+<p>All code is ready to go for <code>R</code>. To use the color palettes
+for displaying purposes in <code>Javascript</code> (GEE) or
+<code>Python</code>, simply copy-paste the lists beneath the example
+images.</p>
 <pre class="r"><code>library(RColorBrewer)
 library(viridis)
 library(wesanderson)
-library(tidyverse)</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.6.2</code></pre>
-<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.6.2</code></pre>
-<pre class="r"><code>library(cartography)
-library(gameofthrones)
+library(tidyverse)
+library(cartography)
 
 heatmap$value &lt;- scale(heatmap$value)
 
@@ -439,7 +410,7 @@ plot(spectral)</code></pre>
 [&quot;D53E4F&quot;, &quot;F46D43&quot;, &quot;FDAE61&quot;, &quot;FEE08B&quot;, &quot;FFFFBF&quot;, &quot;E6F598&quot;, &quot;ABDDA4&quot;, &quot;66C2A5&quot;, &quot;3288BD&quot;]
 reversed
 [&quot;3288BD&quot;, &quot;66C2A5&quot;, &quot;ABDDA4&quot;, &quot;E6F598&quot;, &quot;FFFFBF&quot;, &quot;FEE08B&quot;, &quot;FDAE61&quot;, &quot;F46D43&quot;, &quot;D53E4F&quot;]</code></pre>
-<script type="text/javascript">
+<script>
 normal
 ["D53E4F", "F46D43", "FDAE61", "FEE08B", "FFFFBF", "E6F598", "ABDDA4", "66C2A5", "3288BD"]
 reversed
@@ -455,7 +426,7 @@ plot(viridis)</code></pre>
 [&quot;440154&quot;, &quot;472D7B&quot;, &quot;3B528B&quot;, &quot;2C728E&quot;, &quot;21908C&quot;, &quot;27AD81&quot;, &quot;5DC863&quot;, &quot;AADC32&quot;, &quot;FDE725&quot;]
 reversed
 [&quot;FDE725&quot;, &quot;AADC32&quot;, &quot;5DC863&quot;, &quot;27AD81&quot;, &quot;21908C&quot;, &quot;2C728E&quot;, &quot;3B528B&quot;, &quot;472D7B&quot;, &quot;440154&quot;]</code></pre>
-<script type="text/javascript">
+<script>
 normal
 ["440154", "472D7B", "3B528B", "2C728E", "21908C", "27AD81", "5DC863", "AADC32", "FDE725"]
 reversed
@@ -474,7 +445,7 @@ plot(magma)</code></pre>
 [&quot;000004&quot;, &quot;1D1147&quot;, &quot;51127C&quot;, &quot;822681&quot;, &quot;B63679&quot;, &quot;E65164&quot;, &quot;FB8861&quot;, &quot;FEC287&quot;, &quot;FCFDBF&quot;]
 reversed
 [&quot;FCFDBF&quot;, &quot;FEC287&quot;, &quot;FB8861&quot;, &quot;E65164&quot;, &quot;B63679&quot;, &quot;822681&quot;, &quot;51127C&quot;, &quot;1D1147&quot;, &quot;000004&quot;]</code></pre>
-<script type="text/javascript">
+<script>
 normal
 ["000004", "1D1147", "51127C", "822681", "B63679", "E65164", "FB8861", "FEC287", "FCFDBF"]
 reversed
@@ -490,7 +461,7 @@ plot(plasma)</code></pre>
 [&quot;0D0887&quot;, &quot;4C02A1&quot;, &quot;7E03A8&quot;, &quot;A92395&quot;, &quot;CC4678&quot;, &quot;E56B5D&quot;, &quot;F89441&quot;, &quot;FDC328&quot;, &quot;F0F921&quot;]
 reversed
 [&quot;F0F921&quot;, &quot;FDC328&quot;, &quot;F89441&quot;, &quot;E56B5D&quot;, &quot;CC4678&quot;, &quot;A92395&quot;, &quot;7E03A8&quot;, &quot;4C02A1&quot;, &quot;0D0887&quot;]</code></pre>
-<script type="text/javascript">
+<script>
 normal
 ["0D0887", "4C02A1", "7E03A8", "A92395", "CC4678", "E56B5D", "F89441", "FDC328", "F0F921"]
 reversed
@@ -509,7 +480,7 @@ plot(RdBu)</code></pre>
 [&quot;B2182B&quot;, &quot;D6604D&quot;,&quot;F4A582&quot;, &quot;FDDBC7&quot;, &quot;D1E5F0&quot;, &quot;92C5DE&quot;, &quot;4393C3&quot;, &quot;2166AC&quot;]
 reversed
 [&quot;2166AC&quot;, &quot;4393C3&quot;, &quot;92C5DE&quot;, &quot;D1E5F0&quot;, &quot;FDDBC7&quot;, &quot;F4A582&quot;, &quot;D6604D&quot;, &quot;B2182B&quot;]</code></pre>
-<script type="text/javascript">
+<script>
 normal
 ["B2182B", "D6604D","F4A582", "FDDBC7", "D1E5F0", "92C5DE", "4393C3", "2166AC"]
 reversed
@@ -525,7 +496,7 @@ plot(YlGnBu)</code></pre>
 [&quot;FFFFD9&quot;, &quot;EDF8B1&quot;, &quot;C7E9B4&quot;, &quot;7FCDBB&quot;, &quot;41B6C4&quot;, &quot;1D91C0&quot;, &quot;225EA8&quot;, &quot;253494&quot;, &quot;081D58&quot;]
 reversed
 [&quot;081D58&quot;, &quot;253494&quot;, &quot;225EA8&quot;, &quot;1D91C0&quot;, &quot;41B6C4&quot;, &quot;7FCDBB&quot;, &quot;C7E9B4&quot;, &quot;EDF8B1&quot;, &quot;FFFFD9&quot;]</code></pre>
-<script type="text/javascript">
+<script>
 normal
 ["FFFFD9", "EDF8B1", "C7E9B4", "7FCDBB", "41B6C4", "1D91C0", "225EA8", "253494", "081D58"]
 reversed
@@ -544,7 +515,7 @@ plot(YlGn)</code></pre>
 [&quot;FFFFE5&quot;, &quot;F7FCB9&quot;, &quot;D9F0A3&quot;, &quot;ADDD8E&quot;, &quot;78C679&quot;, &quot;41AB5D&quot;, &quot;238443&quot;, &quot;006837&quot;, &quot;004529&quot;]
 reversed
 [&quot;004529&quot;, &quot;006837&quot;, &quot;238443&quot;, &quot;41AB5D&quot;, &quot;78C679&quot;, &quot;ADDD8E&quot;, &quot;D9F0A3&quot;, &quot;F7FCB9&quot;, &quot;FFFFE5&quot;]</code></pre>
-<script type="text/javascript">
+<script>
 normal
 ["FFFFE5", "F7FCB9", "D9F0A3", "ADDD8E", "78C679", "41AB5D", "238443", "006837", "004529"]
 reversed
@@ -557,7 +528,7 @@ reversed
 plot(turquiose)</code></pre>
 <p><img src="color_palettes_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <pre class="js"><code>[&quot;B6EFB6&quot;, &quot;A5D8B1&quot;, &quot;95C2AC&quot;, &quot;85ACA7&quot;, &quot;7190A1&quot;, &quot;5B739B&quot;, &quot;435490&quot;, &quot;253175&quot;, &quot;080E5B&quot;]</code></pre>
-<script type="text/javascript">
+<script>
 ["B6EFB6", "A5D8B1", "95C2AC", "85ACA7", "7190A1", "5B739B", "435490", "253175", "080E5B"]
 </script>
 </div>
@@ -570,7 +541,7 @@ plot(turquiose)</code></pre>
 plot(Greens)</code></pre>
 <p><img src="color_palettes_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <pre class="js"><code>[&quot;F7FCF5&quot;, &quot;E5F5E0&quot;, &quot;C7E9C0&quot;, &quot;A1D99B&quot;, &quot;74C476&quot;, &quot;41AB5D&quot;, &quot;238B45&quot;, &quot;006D2C&quot;, &quot;00441B&quot;]</code></pre>
-<script type="text/javascript">
+<script>
 ["F7FCF5", "E5F5E0", "C7E9C0", "A1D99B", "74C476", "41AB5D", "238B45", "006D2C", "00441B"]
 </script>
 </div>
@@ -580,7 +551,7 @@ plot(Greens)</code></pre>
 plot(Blues)</code></pre>
 <p><img src="color_palettes_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <pre class="js"><code>[&quot;F7FBFF&quot;, &quot;DEEBF7&quot;, &quot;C6DBEF&quot;, &quot;9ECAE1&quot;, &quot;6BAED6&quot;, &quot;4292C6&quot;, &quot;2171B5&quot;, &quot;08519C&quot;, &quot;08306B&quot;]</code></pre>
-<script type="text/javascript">
+<script>
 ["F7FBFF", "DEEBF7", "C6DBEF", "9ECAE1", "6BAED6", "4292C6", "2171B5", "08519C", "08306B"]
 </script>
 </div>
@@ -590,7 +561,7 @@ plot(Blues)</code></pre>
 plot(Reds)</code></pre>
 <p><img src="color_palettes_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <pre class="js"><code>[&quot;FFF5F0&quot;, &quot;FEE0D2&quot;, &quot;FCBBA1&quot;, &quot;FC9272&quot;, &quot;FB6A4A&quot;, &quot;EF3B2C&quot;, &quot;CB181D&quot;, &quot;A50F15&quot;, &quot;67000D&quot;]</code></pre>
-<script type="text/javascript">
+<script>
 ["FFF5F0", "FEE0D2", "FCBBA1", "FC9272", "FB6A4A", "EF3B2C", "CB181D", "A50F15", "67000D"]
 </script>
 </div>
@@ -600,7 +571,7 @@ plot(Reds)</code></pre>
 plot(Orange)</code></pre>
 <p><img src="color_palettes_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <pre class="js"><code>[&quot;FDE686&quot;, &quot;FDD271&quot;, &quot;FDBF5D&quot;, &quot;FDAC49&quot;, &quot;FE9430&quot;, &quot;FE7B15&quot;, &quot;FD5C00&quot;, &quot;F82E00&quot;, &quot;F40000&quot;]</code></pre>
-<script type="text/javascript">
+<script>
 ["FDE686", "FDD271", "FDBF5D", "FDAC49", "FE9430", "FE7B15", "FD5C00", "F82E00", "F40000"]
 </script>
 </div>
@@ -610,30 +581,21 @@ plot(Orange)</code></pre>
 plot(Grey)</code></pre>
 <p><img src="color_palettes_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <pre class="js"><code>[&quot;DDDCDC&quot;, &quot;C8C7C7&quot;, &quot;B3B3B3&quot;, &quot;9E9E9E&quot;, &quot;858585&quot;, &quot;696969&quot;, &quot;4D4D4D&quot; &quot;2E2E2E&quot;, &quot;10100F&quot;]</code></pre>
-<script type="text/javascript">
+<script>
 ["DDDCDC", "C8C7C7", "B3B3B3", "9E9E9E", "858585", "696969", "4D4D4D" "2E2E2E", "10100F"]
 </script>
 </div>
 </div>
 <div id="tv-inspired-palettes" class="section level1">
 <h1>TV-inspired palettes</h1>
-<div id="game-of-thrones-house-lanister" class="section level2">
-<h2>Game of Thrones: House Lanister</h2>
-<pre class="r"><code>Lanister &lt;- got(9, option = &quot;Targaryen&quot;)
-plot(Lanister)</code></pre>
-<p><img src="color_palettes_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
-<pre class="js"><code>[&quot;000000FF&quot;, &quot;270001FF&quot;, &quot;4E0002FF&quot;, &quot;750003FF&quot;, &quot;9D0005FF&quot;, &quot;994953FF&quot;, &quot;9593A2FF&quot;, &quot;B6B5BCFF&quot;, &quot;D8D8D8FF&quot;]</code></pre>
-<script type="text/javascript">
-["000000FF", "270001FF", "4E0002FF", "750003FF", "9D0005FF", "994953FF", "9593A2FF", "B6B5BCFF", "D8D8D8FF"]
-</script>
-</div>
-<div id="wes-anderson-the-life-aquatic-with-steve-zissou-2004" class="section level2">
+<div id="wes-anderson-the-life-aquatic-with-steve-zissou-2004"
+class="section level2">
 <h2>Wes Anderson: The Life Aquatic with Steve Zissou (2004)</h2>
 <pre class="r"><code>zissou &lt;- wes_palette(&quot;Zissou1&quot;)
 plot(zissou)</code></pre>
-<p><img src="color_palettes_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p><img src="color_palettes_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <pre class="js"><code>[&quot;3B9AB2&quot;, &quot;78B7C5&quot;, &quot;EBCC2A&quot;, &quot;E1AF00&quot;, &quot;F21A00&quot;]</code></pre>
-<script type="text/javascript">
+<script>
 ["3B9AB2", "78B7C5", "EBCC2A", "E1AF00", "F21A00"]
 </script>
 </div>
@@ -641,7 +603,8 @@ plot(zissou)</code></pre>
 <div id="further-color-resources" class="section level1">
 <h1>Further color resources</h1>
 <ul>
-<li><a href="https://github.com/EmilHvitfeldt/r-color-palettes">Summary of almost all available R color packages</a></li>
+<li><a href="https://github.com/EmilHvitfeldt/r-color-palettes">Summary
+of almost all available R color packages</a></li>
 <li><a href="https://color.adobe.com/">Adobe color wheel</a></li>
 </ul>
 </div>
@@ -657,7 +620,7 @@ plot(zissou)</code></pre>
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -675,7 +638,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
@@ -684,6 +647,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')
@@ -696,7 +662,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
