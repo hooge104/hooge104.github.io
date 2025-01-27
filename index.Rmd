@@ -1,9 +1,0 @@
----
-title: "About me"
-output: html_document
----
-<link rel="stylesheet" href="styles.css" type="text/css">
-<link rel="stylesheet" href="site_libs/academicons-1.8.6/css/academicons.css"/>
-
-I am a research scientist at the [Crowther Lab](https://www.crowtherlab.com/). Working on the intersection of ecology, global change and data science, I create global high-resolution maps that help shape the fundamental understanding of planet Earth. This knowledge can help to make the right decisions in the fight against climate change.
-

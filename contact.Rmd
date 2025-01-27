@@ -1,9 +1,0 @@
----
----
-
-<link rel="stylesheet" href="styles.css" type="text/css">
-
-Crowther Lab, Institute of Integrative Biology, ETH Zürich<br>
-Universtätstrasse 16, Zürich<br>
-johan.vandenhoogen@usys.ethz.ch
-
