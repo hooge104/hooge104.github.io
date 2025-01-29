@@ -1,0 +1,21 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "name": "Germany Bounding Box" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [5.866, 47.270],  
+            [15.042, 47.270],
+            [15.042, 55.058], 
+            [5.866, 55.058], 
+            [5.866, 47.270] 
+          ]
+        ]
+      }
+    }
+  ]
+}
